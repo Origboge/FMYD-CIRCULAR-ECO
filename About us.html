@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMYD</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css?v=1.0" rel="stylesheet"> -->
+
+
+
+</head>
+
+<body>
+
+    <!-- Loading overlay -->
+    <!-- <div class="loading-overlay" id="loading-overlay"> -->
+    <!-- PNG logo used as spinner -->
+    <!-- <img src="images/logo.jpg" alt="Loading..." class="spinner-logo">
+    </div> -->
+    <div class="page-content">
+
+        <header>
+
+            <!-- As a link -->
+            <nav class="navbar navbar-expand-md navbar-expand-sm ">
+                <div class="container-fluid custom-padding">
+                    <a class="navbar-brand" href="https://fmyd.gov.ng/">
+                        <img class="logo" src="images/FMYD LOGO.jpg"> </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="home.html">
+                                    <span class="bi bi-house"></span> Home
+                                </a>
+                                <!-- <a class="nav-link  " href="home.html">Home</a> -->
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">About Us</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="About Us.html">Vision</a></li>
+                                    <li><a class="dropdown-item" href="About Us.html">Mission</a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="register.html"> <span class="bi bi-file-earmark-text"></span>Register Now</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section class="about-us">
+            <div class="container">
+                <h2 class="about-heading">ABOUT US.</h2>
+                <p class="intro-text2">
+                    The Waste to Wealth Initiative is a groundbreaking project designed specifically to create wealth / job opportunities for youths by transform waste into Valuable resources & Eco-friendly items, promoting a circular economy and sustainable waste management
+                    practices across the 36 states of Nigeria and FCT. Implemented by the Federal Ministry of Youth Development on the mandate of president Bola Ahmed Tinubu, this initiative will empower young Nigerians to become job creators, develop
+                    waste-to-wealth businesses, contributing to achieving the Sustainable Development Goals (SDGs), mitigating climate change effect, reducing environmental pollution and fostering economic growth. The project aims to train youth on how
+                    to make money from Plastic Recycling, Paper Recycling, Metal Recycling & Scrabs, Glass Recycling, E Waste Recycling, Textiles Recycling, Waste Valorization to Animal Feeds & Fertilizers, Energy & Community Renewable Solutions, wind
+                    turbines etc.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- jquery plugin -->
+        <script src="https://kit.fontawesome.com/d408e8dabc.js" crossorigin="anonymous"></script>
+        <script src="js/jquery-3.7.1.js"></script>
+        <!-- <script src="js/bootstrap.min.js"></script> -->
+        <script src="js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            AOS.init();
+        </script>
+        <script>
+            // Wait for the DOM to fully load
+            document.addEventListener("DOMContentLoaded", function() {
+                // Select the entire page content container
+                var pageContent = document.querySelector('.page-content');
+
+                // Add the "show" class to trigger the animation
+                pageContent.classList.add('show');
+            });
+        </script>
+</body>
+
+
+
+</html>

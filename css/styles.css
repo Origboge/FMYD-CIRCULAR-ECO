@@ -1,0 +1,247 @@
+                    .body {
+                        font-family: 'Poppins', sans-serif;
+                    }
+                    
+                     :root {
+                        --bs-body-font-family: 'Poppins', sans-serif;
+                    }
+                    
+                    .logo {
+                        max-width: 100%;
+                        /* scales down if needed */
+                        height: 150px;
+                        /* keeps original aspect ratio */
+                        width: auto;
+                        /* max logo width on large screens */
+                        transition: width 0.3s ease;
+                        /* smooth resizing */
+                    }
+                    
+                    */ .container-fluid.custom-padding {
+                        padding-left: 30px;
+                        padding-right: 250px;
+                    }
+                    
+                    .nav-link {
+                        /* margin-top: 20px;
+    margin-bottom: 20px; */
+                        --bs-nav-link-color: hsl(138, 84%, 29%);
+                        /* regular color */
+                        --bs-nav-link-hover-color: black;
+                        /* color on hover */
+                    }
+                    
+                    .navbar {
+                        background-color: rgb(255, 255, 255);
+                    }
+                    
+                    .nav-item {
+                        border: 5px;
+                        padding: 15px;
+                        width: auto;
+                        font-family: sans-serif;
+                        font-weight: normal;
+                        font-size: 18px;
+                    }
+                    
+                    .nav-item:hover {
+                        background: hsl(138, 84%, 29%);
+                    }
+                    /* .intro-section {
+                        background: linear-gradient(to bottom, #ffffff 0%, #e9fbe9 10%, hsl(138, 84%, 29%) 100%);
+                        padding: 100px 20px; */
+                    /* space from top and sides */
+                    /* color: black;
+                        text-align: center;
+                    } */
+                    
+                    .intro-section {
+                        position: relative;
+                        height: 100vh;
+                        /* Full screen */
+                        background-image: url('../Images/waste.JPG');
+                        /* 🔁 Replace this */
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        color: white;
+                        padding: 20px;
+                    }
+                    /* Overlay with fade */
+                    
+                    .intro-section::before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: 100%;
+                        background: linear-gradient( to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(233, 251, 233, 0.8) 10%, rgba(0, 100, 0, 0.7) 100%);
+                        z-index: 1;
+                    }
+                    /* Make sure the text sits above the overlay */
+                    
+                    .intro-section .container {
+                        position: relative;
+                        z-index: 2;
+                        margin-top: -200px;
+                    }
+                    
+                    .intro-heading {
+                        color: #000000;
+                        font-weight: normal;
+                    }
+                    
+                    .intro-heading2 {
+                        color: #000000;
+                        font-style: italic;
+                        font-weight: bold;
+                    }
+                    
+                    .intro-text {
+                        color: green;
+                        margin-bottom: 30px;
+                        font-weight: bold;
+                        font-size: 20px;
+                    }
+                    
+                    .register-btn {
+                        margin: 20px 0;
+                        padding: 12px 25px;
+                        font-weight: bold;
+                        font-size: 18px;
+                        border-radius: 30px;
+                        background-color: hsl(138, 84%, 29%);
+                        border: none;
+                        transition: transform 0.3s ease, background-color 0.3s ease;
+                    }
+                    
+                    .register-btn:hover {
+                        background-color: #146c43;
+                        transform: scale(1.05);
+                    }
+                    
+                    .about-us {
+                        width: 100%;
+                        padding: 30px 20px;
+                        position: relative;
+                        height: 100vh;
+                        /* Full screen */
+                        background-image: url('../Images/waste.JPG');
+                        /* 🔁 Replace this */
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        color: white;
+                        padding: 20px;
+                    }
+                    
+                    .about-us::before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: 100%;
+                        background: linear-gradient( to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(233, 251, 233, 0.8) 10%, rgba(0, 100, 0, 0.7) 100%);
+                        z-index: 1;
+                    }
+                    
+                    .about-us .container {
+                        position: relative;
+                        z-index: 2;
+                        margin-top: -0px;
+                    }
+                    
+                    .about-heading {
+                        color: #000000;
+                        font-weight: normal;
+                    }
+                    
+                    .intro-text2 {
+                        color: #000000;
+                        font-size: 14px;
+                        font-weight: no;
+                    }
+                    /* DESKTOP SCREEN */
+                    
+                    @media (max-width: 880px) and (min-width: 576px) {
+                        /* Adjust logo */
+                        .navbar-brand img {
+                            width: auto;
+                            /* smaller logo */
+                            height: 100px;
+                            /* keeps ratio */
+                        }
+                        /* Adjust nav link spacing */
+                        .navbar-nav {
+                            gap: 5px;
+                            /* reduce space between nav items */
+                        }
+                        .nav-link {
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            font-size: 15px;
+                            /* smaller text */
+                        }
+                        .nav-item {
+                            border: 5px;
+                            padding: 15px;
+                            width: auto;
+                            font-family: sans-serif;
+                            font-weight: normal;
+                            font-size: 16px;
+                            padding-right: 0px;
+                        }
+                    }
+                    /* MOBILE SCREEN */
+                    
+                    @media (max-width: 575px) {
+                        .nav-item {
+                            border: 5px;
+                            padding: 5px;
+                            width: 100%;
+                            background: hsl(138, 84%, 29%);
+                            margin-top: 5px;
+                            text-align: center;
+                            .nav-link {
+                                color: black;
+                            }
+                            .Panel-footer {
+                                text-align: center;
+                            }
+                            .Panel-footer section hr {
+                                width: 100%;
+                            }
+                            div.row {
+                                width: 100%;
+                            }
+                            #staff2,
+                            #gallery2,
+                            #acalender,
+                            #map2 {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    /* @media (max-width: 455px) {
+    .logo {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+@media (max-width: 415px) {
+    .logo {
+        width: 45px;
+        height: 45px;
+    }
+}
