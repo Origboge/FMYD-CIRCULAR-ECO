@@ -59,7 +59,7 @@
                         position: relative;
                         height: 100vh;
                         /* Full screen */
-                        background-image: url('../Images/waste.JPG');
+                        background-image: url('..\images\waste.JPG');
                         /* 🔁 Replace this */
                         background-size: cover;
                         background-position: center;
@@ -131,7 +131,7 @@
                         position: relative;
                         height: 100vh;
                         /* Full screen */
-                        background-image: url('../Images/waste.JPG');
+                        background-image: url('..\images\waste.JPG');
                         /* 🔁 Replace this */
                         background-size: cover;
                         background-position: center;
