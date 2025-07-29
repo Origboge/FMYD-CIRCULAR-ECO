@@ -23,8 +23,6 @@
                     }
                     
                     .nav-link {
-                        /* margin-top: 20px;
-    margin-bottom: 20px; */
                         --bs-nav-link-color: hsl(138, 84%, 29%);
                         /* regular color */
                         --bs-nav-link-hover-color: black;
@@ -47,19 +45,12 @@
                     .nav-item:hover {
                         background: hsl(138, 84%, 29%);
                     }
-                    /* .intro-section {
-                        background: linear-gradient(to bottom, #ffffff 0%, #e9fbe9 10%, hsl(138, 84%, 29%) 100%);
-                        padding: 100px 20px; */
-                    /* space from top and sides */
-                    /* color: black;
-                        text-align: center;
-                    } */
                     
                     .intro-section {
                         position: relative;
-                        height: 100vh;
+                        height: 80vh;
                         /* Full screen */
-                        background-image: url('../Images/waste.jpg');
+                        background-image: url('../Images/waste2.jpg');
                         /* 🔁 Replace this */
                         background-size: cover;
                         background-position: center;
@@ -83,12 +74,12 @@
                         background: linear-gradient( to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(233, 251, 233, 0.8) 10%, rgba(0, 100, 0, 0.7) 100%);
                         z-index: 1;
                     }
-                    /* Make sure the text sits above the overlay */
+                    /* Makes sure the text sits above the overlay */
                     
                     .intro-section .container {
                         position: relative;
                         z-index: 2;
-                        margin-top: -200px;
+                        margin-top: -0px;
                     }
                     
                     .intro-heading {
@@ -127,9 +118,9 @@
                     
                     .about-us {
                         width: 100%;
-                        padding: 30px 20px;
+                        padding: 100px 20px;
                         position: relative;
-                        height: 100vh;
+                        height: auto;
                         /* Full screen */
                         background-image: url('../Images/waste.jpg');
                         /* 🔁 Replace this */
@@ -137,11 +128,12 @@
                         background-position: center;
                         background-repeat: no-repeat;
                         display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-align: center;
+                        /* align-items: center;
+                        justify-content: center; */
+                        text-align: justify;
+                        text-justify: inter-word;
                         color: white;
-                        padding: 20px;
+                        overflow: visible;
                     }
                     
                     .about-us::before {
@@ -151,7 +143,7 @@
                         left: 0;
                         height: 100%;
                         width: 100%;
-                        background: linear-gradient( to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(233, 251, 233, 0.8) 10%, rgba(0, 100, 0, 0.7) 100%);
+                        background: linear-gradient( to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(233, 251, 233, 0.8) 10%, rgba(0, 100, 0, 0.7) 200%);
                         z-index: 1;
                     }
                     
@@ -159,17 +151,50 @@
                         position: relative;
                         z-index: 2;
                         margin-top: -0px;
+                        max-width: 1200px;
+                        margin: 0 auto;
                     }
                     
                     .about-heading {
-                        color: #000000;
-                        font-weight: normal;
+                        color: hsl(138, 84%, 29%);
+                        font-weight: 700;
+                        font-size: 1.5rem, 5vw, 3rem;
+                        text-transform: uppercase;
+                        margin-bottom: 20px;
                     }
                     
                     .intro-text2 {
                         color: #000000;
-                        font-size: 14px;
-                        font-weight: no;
+                        font-size: 16px;
+                        font-weight: 300;
+                        text-align: justify;
+                        line-height: 1.7;
+                        word-spacing: normal;
+                    }
+                    
+                    .highlight {
+                        color: #145214;
+                        font-weight: 600;
+                        text-shadow: 0 0 5px rgba(66, 245, 123, 0.5);
+                    }
+                    
+                    .about-inline-image {
+                        width: 100%;
+                        max-width: 800px;
+                        max-height: 400px;
+                        border-radius: 10px;
+                        object-fit: cover;
+                        margin: 30px 0;
+                        display: block;
+                        text-align: center;
+                        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                    }
+                    
+                    .image-wrapper {
+                        width: 100%;
+                        margin: 30px 0;
+                        display: flex;
+                        justify-content: center;
                     }
                     /* DESKTOP SCREEN */
                     
