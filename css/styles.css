@@ -31,6 +31,8 @@
                     
                     .navbar {
                         background-color: rgb(255, 255, 255);
+                        padding-top: 1px;
+                        padding-bottom: 1px;
                     }
                     
                     .nav-item {
@@ -48,7 +50,7 @@
                     
                     .intro-section {
                         position: relative;
-                        height: 80vh;
+                        height: auto;
                         /* Full screen */
                         background-image: url('../Images/waste2.jpg');
                         /* 🔁 Replace this */
@@ -122,11 +124,12 @@
                         margin-top: 0px;
                         /* Pulls it up into the intro section slightly */
                         background-color: hsl(138, 84%, 29%);
-                        color: white;
+                        color: #140c0c;
                         padding: 15px 30px;
                         border-radius: 8px;
                         font-size: 2rem;
-                        font-weight: bold;
+                        font-weight: 600;
+                        font-family: 'Times New Roman', Times, serif;
                         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
                         z-index: 3;
                     }
@@ -163,9 +166,24 @@
                         margin-bottom: 0px;
                     }
                     
+                    .features-wrapper {
+                        background: white;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                        /* soft shadows on edges */
+                        border-radius: 12px;
+                        padding: 40px 30px;
+                        margin: 100px auto;
+                        margin-top: -10px;
+                        max-width: 1200px;
+                        z-index: 5;
+                        position: relative;
+                    }
+                    
                     .features-section {
                         background: #f0fff0;
                         padding: 20px 20px;
+                        position: relative;
+                        overflow: hidden;
                     }
                     
                     .features-container {
@@ -173,6 +191,8 @@
                         justify-content: space-between;
                         gap: 40px;
                         flex-wrap: wrap;
+                        position: relative;
+                        z-index: 2;
                     }
                     
                     .feature-column {
@@ -194,6 +214,17 @@
                         transition: all 0.6s ease;
                         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
                     }
+                    
+                    .sticker {
+                        position: absolute;
+                        top: -10px;
+                        right: -10px;
+                        width: 40px;
+                        transform: rotate(-15deg);
+                        z-index: 2;
+                        opacity: 0.8;
+                    }
+                    /* Position each one randomly */
                     
                     .about-us {
                         width: 100%;
