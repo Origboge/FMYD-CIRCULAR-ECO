@@ -91,8 +91,7 @@
                     
                     .intro-heading2 {
                         color: #000000;
-                        font-style: italic;
-                        font-weight: bold;
+                        font-weight: 500PX;
                     }
                     
                     .intro-text {
@@ -100,6 +99,7 @@
                         margin-bottom: 30px;
                         font-weight: bold;
                         font-size: 20px;
+                        font-style: italic;
                     }
                     
                     .register-btn {
@@ -223,6 +223,75 @@
                         transform: rotate(-15deg);
                         z-index: 2;
                         opacity: 0.8;
+                    }
+                    
+                    .leaders-section {
+                        background: #fff;
+                        box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+                        padding: 80px 20px;
+                        position: relative;
+                        z-index: 1;
+                        margin-top: -50px;
+                    }
+                    
+                    .leaders-wrapper {
+                        max-width: 1200px;
+                        margin: auto;
+                        background: #fff;
+                        border-radius: 15px;
+                        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+                        padding: 50px 30px;
+                        position: relative;
+                        margin-top: -100px;
+                    }
+                    
+                    .section-title {
+                        text-align: center;
+                        font-size: 36px;
+                        color: #2e7d32;
+                        font-weight: 800;
+                        margin-bottom: 50px;
+                    }
+                    
+                    .leaders-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                        gap: 40px;
+                    }
+                    
+                    .leader-card {
+                        background: linear-gradient(to bottom, #dff7df, #ffffff);
+                        border-radius: 15px;
+                        padding: 20px;
+                        text-align: center;
+                        position: relative;
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+                    }
+                    
+                    .leader-card img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                        border-radius: 12px;
+                        margin-bottom: 15px;
+                    }
+                    
+                    .leader-info h3 {
+                        font-size: 20px;
+                        margin: 5px 0;
+                        color: #1e4620;
+                    }
+                    
+                    .leader-info .position {
+                        font-weight: bold;
+                        color: #388e3c;
+                        margin-bottom: 10px;
+                    }
+                    
+                    .leader-info .quote {
+                        font-style: italic;
+                        color: #4f4f4f;
+                        font-size: 14px;
                     }
                     /* Position each one randomly */
                     
