@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css?v=1.0" rel="stylesheet"> -->
 
 
@@ -74,6 +75,29 @@
         </section>
 
 
+        <section class="features-section">
+            <div class="container features-container">
+                <div class="section-header">
+                    <h2 class="training-title-sign" data-aos="fade-down" data-aos-duration="1000">Areas of Training</h2>
+                </div>
+                <div class="feature-column left">
+                    <div class="feature-box" data-aos="zoom-in">Plastic Recycling</div>
+                    <div class="feature-box" data-aos="zoom-in">Wind Turbines</div>
+                    <div class="feature-box" data-aos="zoom-in">Glass Recycling</div>
+                    <div class="feature-box" data-aos="zoom-in">E-Waste Recycling</div>
+                    <div class="feature-box" data-aos="zoom-in">Waste Valorization to Animal Feeds & Fertilizers</div>
+                </div>
+                <div class="feature-column right">
+                    <div class="feature-box" data-aos="zoom-in">Textiles Recycling</div>
+                    <div class="feature-box" data-aos="zoom-in">Waste Exportation</div>
+                    <div class="feature-box" data-aos="zoom-in">Metal Recycling</div>
+                    <div class="feature-box" data-aos="zoom-in">Scrabs Recycling</div>
+                    <div class="feature-box" data-aos="zoom-in">Energy & Community Renewable Solutions</div>
+                </div>
+            </div>
+        </section>
+
+
         <!-- jquery plugin -->
         <script src="https://kit.fontawesome.com/d408e8dabc.js" crossorigin="anonymous"></script>
         <script src="js/jquery-3.7.1.js"></script>
@@ -84,6 +108,47 @@
 
         <script>
             AOS.init();
+        </script>
+        <script>
+            AOS.init({
+                duration: 1000,
+                once: true,
+                easing: 'ease-in-out'
+            });
+        </script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                once: false, // Animation triggers every time you scroll
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <script>
+            // Animate feature boxes on scroll with slower ease
+            gsap.utils.toArray(".feature-box").forEach((box) => {
+                ScrollTrigger.create({
+                    trigger: box,
+                    start: "top 80%",
+                    onEnter: () => animateBox(box),
+                    onEnterBack: () => animateBox(box), // triggers again on scroll up
+                    toggleActions: "play none none none"
+                });
+            });
+
+            function animateBox(box) {
+                gsap.fromTo(box, {
+                    opacity: 0,
+                    y: 60,
+                    scale: 0.8
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 2.5, // slow animation
+                    ease: "slow(0.7, 0.7, false)", // soft easing
+                });
+            }
         </script>
         <script>
             // Wait for the DOM to fully load

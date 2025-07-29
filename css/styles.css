@@ -116,6 +116,85 @@
                         transform: scale(1.05);
                     }
                     
+                    .training-title-sign {
+                        position: relative;
+                        display: inline-block;
+                        margin-top: 0px;
+                        /* Pulls it up into the intro section slightly */
+                        background-color: hsl(138, 84%, 29%);
+                        color: white;
+                        padding: 15px 30px;
+                        border-radius: 8px;
+                        font-size: 2rem;
+                        font-weight: bold;
+                        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+                        z-index: 3;
+                    }
+                    /* Ropes */
+                    
+                    .training-title-sign::before,
+                    .training-title-sign::after {
+                        content: "";
+                        position: absolute;
+                        top: -30px;
+                        width: 2px;
+                        height: 30px;
+                        background-color: #444;
+                    }
+                    
+                    .training-title-sign::before {
+                        left: 10%;
+                    }
+                    
+                    .training-title-sign::after {
+                        right: 10%;
+                    }
+                    /* Rope dots (optional) */
+                    
+                    .training-title-sign::before,
+                    .training-title-sign::after {
+                        border-left: 2px dashed #444;
+                        /* to look like a rope or string */
+                    }
+                    
+                    .section-header {
+                        width: 100%;
+                        text-align: center;
+                        margin-bottom: 0px;
+                    }
+                    
+                    .features-section {
+                        background: #f0fff0;
+                        padding: 20px 20px;
+                    }
+                    
+                    .features-container {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 40px;
+                        flex-wrap: wrap;
+                    }
+                    
+                    .feature-column {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                        flex: 1;
+                    }
+                    
+                    .feature-box {
+                        background: linear-gradient(to bottom, hsl(138, 84%, 30%), hsl(138, 84%, 29%));
+                        color: white;
+                        padding: 30px;
+                        border-radius: 12px;
+                        font-weight: bold;
+                        font-size: 1.1rem;
+                        opacity: 0;
+                        transform: translateY(40px);
+                        transition: all 0.6s ease;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    }
+                    
                     .about-us {
                         width: 100%;
                         padding: 100px 20px;
