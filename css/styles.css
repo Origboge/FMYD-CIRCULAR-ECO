@@ -425,6 +425,72 @@
                     form button:hover {
                         background-color: #145523;
                     }
+                    
+                    .site-footer {
+                        background-color: hsl(138, 84%, 29%);
+                        color: #fff;
+                        padding: 60px 20px 30px;
+                        font-size: 14px;
+                    }
+                    
+                    .footer-container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        max-width: 1200px;
+                        margin: auto;
+                    }
+                    
+                    .footer-column {
+                        flex: 1 1 250px;
+                        margin: 20px;
+                    }
+                    
+                    .footer-logo {
+                        width: 120px;
+                        margin-bottom: 10px;
+                    }
+                    
+                    .footer-column h4 {
+                        margin-bottom: 15px;
+                        color: #aaffaa;
+                        font-size: 16px;
+                    }
+                    
+                    .footer-column ul {
+                        list-style: none;
+                        padding: 0;
+                    }
+                    
+                    .footer-column ul li a {
+                        color: #ffffffb3;
+                        text-decoration: none;
+                        display: block;
+                        margin-bottom: 8px;
+                        transition: color 0.3s;
+                    }
+                    
+                    .footer-column ul li a:hover {
+                        color: #aaffaa;
+                    }
+                    
+                    .socials a img {
+                        width: 24px;
+                        margin-right: 10px;
+                        transition: transform 0.3s;
+                    }
+                    
+                    .socials a:hover img {
+                        transform: scale(1.2);
+                    }
+                    
+                    .footer-bottom {
+                        text-align: center;
+                        padding-top: 20px;
+                        border-top: 1px solid #ffffff33;
+                        font-size: 13px;
+                        opacity: 0.8;
+                    }
                     /* DESKTOP SCREEN */
                     
                     @media (max-width: 880px) and (min-width: 576px) {
