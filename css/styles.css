@@ -376,6 +376,55 @@
                         display: flex;
                         justify-content: center;
                     }
+                    
+                    .register-section {
+                        background-image: linear-gradient(to bottom, #ffffff 0%, #e9fbe9 10%, hsl(138, 84%, 29%) 90%), url('../Images/waste2.jpg');
+                        background-size: cover;
+                        background-position: center;
+                        min-height: 100vh;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 40px 20px;
+                    }
+                    
+                    .form-container {
+                        background: #fff;
+                        padding: 30px;
+                        max-width: 600px;
+                        width: 100%;
+                        border-radius: 10px;
+                        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+                    }
+                    
+                    .form-container h2 {
+                        text-align: center;
+                        margin-bottom: 20px;
+                        color: #1e5631;
+                    }
+                    
+                    form input,
+                    form select,
+                    form button {
+                        width: 100%;
+                        margin: 10px 0;
+                        padding: 12px;
+                        border-radius: 5px;
+                        border: 1px solid #ccc;
+                        font-size: 16px;
+                    }
+                    
+                    form button {
+                        background-color: #1e5631;
+                        color: white;
+                        font-weight: bold;
+                        cursor: pointer;
+                        transition: background 0.3s ease;
+                    }
+                    
+                    form button:hover {
+                        background-color: #145523;
+                    }
                     /* DESKTOP SCREEN */
                     
                     @media (max-width: 880px) and (min-width: 576px) {
