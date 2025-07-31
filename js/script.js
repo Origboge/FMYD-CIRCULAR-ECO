@@ -13,11 +13,11 @@
 //     });
 // });
 
-document.addEventListener("DOMContentLoaded", () => {
+
   
 
-  // All your remaining script code here (populateStates, handle form submission, Firebase, etc.)
-});
+  
+
 // Full Nigeria states and LGAs:
 const stataLGAs = {
     "Abia": ["Aba North", "Aba South", "Arochukwu", "Bende", "Ikwuano", "Isiala Ngwa North", "Isiala Ngwa South", "Isuikwuato", "Obi Ngwa", "Ohafia", "Osisioma", "Ugwunagbo", "Ukwa East", "Ukwa West", "Umuahia North", "Umuahia South", "Umu Nneochi"],
@@ -157,4 +157,5 @@ form.addEventListener("submit", async(e) => {
     }
 });
 
-}); // End of DOMContentLoaded
+
+
