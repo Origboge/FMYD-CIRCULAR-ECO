@@ -14,8 +14,7 @@
 // });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const stateSelect = document.getElementById("state");
-  const lgaSelect = document.getElementById("lga");
+  
 
   // All your remaining script code here (populateStates, handle form submission, Firebase, etc.)
 });
