@@ -16,7 +16,38 @@
 
 
 
-</head>
+</head><section class="register-section">
+            <div class="form-container">
+                <h2>Register for Training</h2>
+                <form action="https://formspree.io/f/yourFormID" method="POST" enctype="multipart/form-data">
+                    <input type="text" name="Full Name" placeholder="Full Name" required />
+                    <input type="tel" name="Phone Number" placeholder="Phone Number" required />
+                    <input type="email" name="Email" placeholder="Email" required />
+                    <input type="number" name="Age" placeholder="Age" required />
+                    <input type="file" name="Passport Photo" accept="image/*" required />
+                    <input type="text" name="State" placeholder="State" required />
+                    <input type="text" name="LGA" placeholder="LGA" required />
+                    <input type="text" name="Address" placeholder="Permanent Home Address" required />
+                    <input type="text" name="Qualification" placeholder="Highest Qualification" required />
+
+                    <select name="Training Area" required>
+          <option value="">Select Area of Interest</option>
+          <option>Plastic Recycling</option>
+          <option>Wind Turbines</option>
+          <option>Glass Recycling</option>
+          <option>E-Waste Recycling</option>
+          <option>Animal Feeds & Fertilizer</option>
+          <option>Textiles Recycling</option>
+          <option>Waste Exportation</option>
+          <option>Metal Recycling</option>
+          <option>Scraps Recycling</option>
+          <option>Energy & Renewable Solutions</option>
+        </select>
+
+                    <button type="submit">Submit Registration</button>
+                </form>
+            </div>
+        </section>
 
 <body>
 

@@ -378,52 +378,77 @@
                     }
                     
                     .register-section {
-                        background-image: linear-gradient(to bottom, #ffffff 0%, #e9fbe9 10%, hsl(138, 84%, 29%) 90%), url('../Images/waste2.jpg');
-                        background-size: cover;
-                        background-position: center;
-                        min-height: 100vh;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 40px 20px;
+                        background: linear-gradient(to bottom, #fff 0%, #e9fbe9 10%, hsl(138, 84%, 29%) 90%);
+                        padding: 60px 20px;
                     }
                     
-                    .form-container {
+                    .register-container {
+                        max-width: 800px;
+                        margin: auto;
                         background: #fff;
-                        padding: 30px;
-                        max-width: 600px;
-                        width: 100%;
                         border-radius: 10px;
-                        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+                        padding: 40px;
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
                     }
                     
-                    .form-container h2 {
+                    .section-title {
+                        font-size: 28px;
+                        color: hsl(138, 84%, 29%);
                         text-align: center;
+                        margin-bottom: 30px;
+                    }
+                    
+                    .form-group {
                         margin-bottom: 20px;
-                        color: #1e5631;
+                        display: flex;
+                        flex-direction: column;
                     }
                     
-                    form input,
-                    form select,
-                    form button {
-                        width: 100%;
-                        margin: 10px 0;
+                    .name-group {
+                        display: flex;
+                        gap: 10px;
+                    }
+                    
+                    input,
+                    select,
+                    textarea {
                         padding: 12px;
-                        border-radius: 5px;
-                        border: 1px solid #ccc;
                         font-size: 16px;
+                        border: 1px solid #aaa;
+                        border-radius: 6px;
+                        outline: none;
+                        transition: 0.3s;
                     }
                     
-                    form button {
-                        background-color: #1e5631;
-                        color: white;
-                        font-weight: bold;
+                    select {
+                        background: #f5fff5;
+                        font-family: inherit;
+                    }
+                    
+                    input:focus,
+                    select:focus,
+                    textarea:focus {
+                        border-color: hsl(138, 84%, 29%);
+                        box-shadow: 0 0 5px rgba(22, 158, 47, 0.4);
+                    }
+                    
+                    textarea {
+                        min-height: 100px;
+                    }
+                    
+                    .submit-btn {
+                        background: hsl(138, 84%, 29%);
+                        color: #fff;
+                        padding: 15px;
+                        font-size: 18px;
+                        border: none;
+                        border-radius: 8px;
                         cursor: pointer;
-                        transition: background 0.3s ease;
+                        transition: 0.3s;
                     }
                     
-                    form button:hover {
-                        background-color: #145523;
+                    .submit-btn:hover {
+                        background: hsl(138, 64%, 24%);
                     }
                     
                     .site-footer {
