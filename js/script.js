@@ -12,7 +12,10 @@
 //         },
 //     });
 // });
-
+document.addEventListener("DOMContentLoaded", () => {
+    // EVERYTHING in your file goes inside here —
+    // state/LGA array, population logic, form submit handlers, Firebase setup, etc.
+});
 
 // Full Nigeria states and LGAs:
 const stataLGAs = {
