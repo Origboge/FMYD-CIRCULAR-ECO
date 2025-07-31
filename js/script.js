@@ -101,7 +101,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Form submission logic
-const form = document.getElementById("registeration-form");
+const form = document.getElementById("registration-form");
 
 form.addEventListener("submit", async(e) => {
     e.preventDefault();
@@ -124,7 +124,28 @@ form.addEventListener("submit", async(e) => {
 
     try {
         await addDoc(collection(db, "registrations"), formData);
-        alert("Registration successful!");
+        // Show loading spinner
+        const formStatus = document.getElementById("form-status");
+        const loadingSpinner = document.getElementById("loading-spinner");
+        const successCheck = document.getElementById("success-check");
+
+        formStatus.style.display = "block";
+        loadingSpinner.style.display = "inline-block";
+        successCheck.style.display = "none";
+
+        // Simulate a delay (e.g. writing to Firestore)
+        setTimeout(() => {
+            loadingSpinner.style.display = "none";
+            successCheck.style.display = "block";
+
+            // Clear form
+            form.reset();
+
+            // Optional: hide success after a few seconds
+            setTimeout(() => {
+                formStatus.style.display = "none";
+            }, 3000);
+        }, 2500); // 2.5 seconds
         form.reset();
     } catch (error) {
         console.error("Error writing to Firestore:", error);

@@ -532,6 +532,11 @@
                         font-size: 14px;
                         color: #aaa;
                     }
+                    
+                    .spinner-border {
+                        width: 2rem;
+                        height: 2rem;
+                    }
                     /* DESKTOP SCREEN */
                     
                     @media (max-width: 880px) and (min-width: 576px) {
