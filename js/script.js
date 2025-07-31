@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // state/LGA array, population logic, form submit handlers, Firebase setup, etc.
 });
 
+  
+
+  
+
 // Full Nigeria states and LGAs:
 const stataLGAs = {
     "Abia": ["Aba North", "Aba South", "Arochukwu", "Bende", "Ikwuano", "Isiala Ngwa North", "Isiala Ngwa South", "Isuikwuato", "Obi Ngwa", "Ohafia", "Osisioma", "Ugwunagbo", "Ukwa East", "Ukwa West", "Umuahia North", "Umuahia South", "Umu Nneochi"],
@@ -155,3 +159,6 @@ form.addEventListener("submit", async(e) => {
         alert("Error: registration not saved.");
     }
 });
+
+
+
