@@ -133,17 +133,17 @@
         <section class="about-us" id="about">
             <div class="container">
                 <h2 class="about-heading">ABOUT THE PROJECT.</h2>
-                <p class="intro-text2">
-                    <p class="intro-text2">The <span class="highlight">Waste to Wealth </span> intiative is a groundbreaking project designed specifically to create wealth / job opportunities for youths by transforming waste into valuable resources & eco-friendly items, promoting
-                        a circular economy and sustainable waste management practices across the 36 states of Nigeria and FCT.</p>
-                    <p class="intro-text2"> Implemented by the <span class="highlight"> Ministry of Youth Development</span> on the mandate of President <span class="highlight">Bola Ahmed Tinubu</span>, this initiative will empower young Nigerians to become job creators, develop
-                        waste-to-wealth businesses, contributing to achieving the <span class="highlight">Sustainable Development Goals</span>(SDGs), mitigating climate change effect, reducing environmental pollution and fostering economic growth.</p>
-                    <div class="image-wrapper"> <img src="Images/sdg releve.jpg" alt="SDG" class="about-inline-image">
-                    </div>
-                    <p class="intro-text2">The project aims to train youth on how to make money from <span class="highlight">Plastic Recycling </span>, <span class="highlight">Paper Recycling</span>, <span class="highlight">Metal Recycling & Scrabs </span>, <span class="highlight">Glass Recycling</span>,
-                        <span class="highlight">E-Waste Recycling</span>, <span class="highlight">Textile Recycling</span>, <span class="highlight">Waste Valorization to Animal Feeds & Fertilizers</span>, <span class="highlight">Energy & Community Renewable Solutions</span>,
-                        <span class="highlight"> Wind turbines</span> etc.</p>
-                </p>
+
+                <p class="intro-text2 p1">The <span class="highlight">Waste to Wealth </span> intiative is a groundbreaking project designed specifically to create wealth / job opportunities for youths by transforming waste into valuable resources & eco-friendly items, promoting
+                    a circular economy and sustainable waste management practices across the 36 states of Nigeria and FCT.</p>
+                <p class="intro-text2 p2"> Implemented by the <span class="highlight"> Ministry of Youth Development</span> on the mandate of President <span class="highlight">Bola Ahmed Tinubu</span>, this initiative will empower young Nigerians to become job creators, develop
+                    waste-to-wealth businesses, contributing to achieving the <span class="highlight">Sustainable Development Goals</span>(SDGs), mitigating climate change effect, reducing environmental pollution and fostering economic growth.</p>
+                <div class="image-wrapper"> <img src="Images/sdg releve.jpg" alt="SDG" class="about-inline-image">
+                </div>
+                <p class="intro-text2 p3">The project aims to train youth on how to make money from <span class="highlight">Plastic Recycling </span>, <span class="highlight">Paper Recycling</span>, <span class="highlight">Metal Recycling & Scrabs </span>, <span class="highlight">Glass Recycling</span>,
+                    <span class="highlight">E-Waste Recycling</span>, <span class="highlight">Textile Recycling</span>, <span class="highlight">Waste Valorization to Animal Feeds & Fertilizers</span>, <span class="highlight">Energy & Community Renewable Solutions</span>,
+                    <span class="highlight"> Wind turbines</span> etc.</p>
+
 
             </div>
         </section>
@@ -179,6 +179,21 @@
                             <p class="quote">"Every recycled item is a naira earned and a step towards wealth creation."</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="partners-section">
+            <div class="container">
+                <h2 class="section-title">Our Partners</h2>
+                <p class="section-subtitle">
+                    Our mission is to support, empower, and protect Nigerian youth. We invite organizations that share our vision to join us in creating a brighter future for the next generation.
+                </p>
+
+                <div class="partners-logos">
+                    <img src="Images/partner (1).png" alt="Partner 1 Logo" class="partner-logo">
+                    <img src="Images/partner (2).png" alt="Partner 2 Logo" class="partner-logo">
+                    <!-- Add more logos below as needed -->
+                    <!-- <img src="images/partner3.png" alt="Partner 3 Logo" class="partner-logo"> -->
                 </div>
             </div>
         </section>
@@ -272,10 +287,52 @@
                     opacity: 1,
                     y: 0,
                     scale: 1,
-                    duration: 2.5, // slow animation
+                    duration: 1, // slow animation
                     ease: "slow(0.7, 0.7, false)", // soft easing
                 });
             }
+            gsap.from(".about-heading", {
+                scrollTrigger: {
+                    trigger: ".p1",
+                    start: "top 80%",
+                    toggleActions: "play none none reset" // key part
+                },
+                x: 100,
+                opacity: 0,
+                duration: 0.5
+            });
+            gsap.from(".p1", {
+                scrollTrigger: {
+                    trigger: ".p1",
+                    start: "top 80%",
+                    toggleActions: "play none none reset" // key part
+                },
+                x: 100,
+                opacity: 0,
+                duration: 0.5
+            });
+
+            gsap.from(".p2", {
+                scrollTrigger: {
+                    trigger: ".p2",
+                    start: "top 80%",
+                    toggleActions: "play none none reset"
+                },
+                x: -100,
+                opacity: 0,
+                duration: 0.5
+            });
+
+            gsap.from(".p3", {
+                scrollTrigger: {
+                    trigger: ".p3",
+                    start: "top 80%",
+                    toggleActions: "play none none reset"
+                },
+                x: 100,
+                opacity: 0,
+                duration: 0.5
+            });
         </script>
         <script>
             // Wait for the DOM to fully load
