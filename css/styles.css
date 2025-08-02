@@ -468,6 +468,7 @@
                         flex-direction: column;
                         align-items: center;
                         gap: 15px;
+                        margin-bottom: 20px;
                     }
                     
                     .footer-logo img {
@@ -561,14 +562,14 @@
                     
                     .partners-logos {
                         display: flex;
-                        flex-direction: column;
-                        align-items: center;
+                        flex-wrap: wrap;
+                        justify-content: center;
                         gap: 20px;
                         margin-top: 20px;
                     }
                     
                     .partner-logo {
-                        max-width: 150px;
+                        width: 250px;
                         height: auto;
                         object-fit: contain;
                         transition: transform 0.3s ease;
@@ -647,7 +648,7 @@
                             text-align: left;
                         }
                         .footer-contact {
-                            text-align: right;
+                            text-align: center;
                         }
                     }
                     /* @media (max-width: 455px) {
