@@ -154,4 +154,5 @@ form.addEventListener("submit", async(e) => {
         console.error("Error writing to Firestore:", error);
         alert("Error: registration not saved.");
     }
+
 });
