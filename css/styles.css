@@ -345,11 +345,12 @@
                     
                     .intro-text2 {
                         color: #000000;
-                        font-size: 16px;
+                        font-size: 1.1rem;
                         font-weight: 300;
                         text-align: justify;
-                        line-height: 1.7;
+                        line-height: 1.6;
                         word-spacing: normal;
+                        word-wrap: break-word;
                     }
                     
                     .highlight {
@@ -637,6 +638,15 @@
                             #map2 {
                                 width: 100%;
                             }
+                        }
+                        .intro-text2 {
+                            color: #000000;
+                            font-size: 1rem;
+                            font-weight: 300;
+                            text-align: justify;
+                            line-height: 1.5;
+                            word-spacing: normal;
+                            word-wrap: break-word;
                         }
                     }
                     /* Responsive Fixes */
