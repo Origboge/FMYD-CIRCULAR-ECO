@@ -298,7 +298,7 @@
                     
                     .about-us {
                         width: 100%;
-                        padding: 100px 20px;
+                        padding: 60px 20px;
                         position: relative;
                         height: auto;
                         /* Full screen */
@@ -307,13 +307,15 @@
                         background-size: cover;
                         background-position: center;
                         background-repeat: no-repeat;
-                        display: flex;
+                        display: block;
+                        box-sizing: border-box;
                         /* align-items: center;
                         justify-content: center; */
                         text-align: justify;
                         text-justify: inter-word;
                         color: white;
-                        overflow: visible;
+                        overflow: hidden;
+                        margin-top: 20px;
                     }
                     
                     .about-us::before {
@@ -349,7 +351,7 @@
                         font-weight: 300;
                         text-align: left;
                         line-height: 1.6;
-                        word-break: normal;
+                        word-wrap: break-word;
                         word-spacing: normal;
                     }
                     
@@ -652,16 +654,12 @@
                             text-align: center;
                         }
                     }
-                    /* @media (max-width: 455px) {
-    .logo {
-        width: 55px;
-        height: 55px;
-    }
-}
-
-@media (max-width: 415px) {
-    .logo {
-        width: 45px;
-        height: 45px;
-    }
-}
+                    
+                    @media (max-width: 395px) {
+                        .navbar-brand img {
+                            width: 150px;
+                            /* smaller logo */
+                            height: 100px;
+                            /* keeps ratio */
+                        }
+                    }
