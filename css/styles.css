@@ -17,7 +17,7 @@
                         /* smooth resizing */
                     }
                     
-                    */ .container-fluid.custom-padding {
+                    .container-fluid.custom-padding {
                         padding-left: 30px;
                         padding-right: 250px;
                     }
@@ -338,19 +338,19 @@
                     .about-heading {
                         color: hsl(138, 84%, 29%);
                         font-weight: 700;
-                        font-size: 1.5rem, 5vw, 3rem;
+                        font-size: clamp( 1.5rem, 5vw, 3rem);
                         text-transform: uppercase;
                         margin-bottom: 20px;
                     }
                     
                     .intro-text2 {
                         color: #000000;
-                        font-size: 1.1rem;
+                        font-size: 1rem;
                         font-weight: 300;
-                        text-align: justify;
+                        text-align: left;
                         line-height: 1.6;
+                        word-break: normal;
                         word-spacing: normal;
-                        word-wrap: break-word;
                     }
                     
                     .highlight {
@@ -638,15 +638,6 @@
                             #map2 {
                                 width: 100%;
                             }
-                        }
-                        .intro-text2 {
-                            color: #000000;
-                            font-size: 1rem;
-                            font-weight: 300;
-                            text-align: justify;
-                            line-height: 1.5;
-                            word-spacing: normal;
-                            word-wrap: break-word;
                         }
                     }
                     /* Responsive Fixes */
