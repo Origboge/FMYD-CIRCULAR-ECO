@@ -84,9 +84,12 @@ document.getElementById("state").addEventListener("change", () => {
 });
 
 
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
+
 
 // Firebase config
 const firebaseConfig = {
@@ -101,7 +104,114 @@ const firebaseConfig = {
 
 // Init Firebase
 const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+
 const db = getFirestore(app);
+// File inputs and error messages
+const passportInput = document.getElementById("passport");
+const passportError = document.getElementById("passport-error");
+
+const ninInput = document.getElementById("nin");
+const ninError = document.getElementById("nin-error");
+
+
+// Passport file preview & size check
+passportInput.addEventListener("change", () => {
+    const file = passportInput.files[0];
+    const box = document.getElementById("passport-box");
+
+    // remove previous preview
+    const existingImg = box.querySelector("img");
+    if (existingImg) existingImg.remove();
+
+    if (file) {
+        if (file.size > 100 * 1024) { // 100 KB
+            passportError.style.display = "block";
+            passportInput.value = "";
+            return;
+        } else {
+            passportError.style.display = "none";
+        }
+
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.objectFit = "cover";
+        img.style.position = "absolute";
+        img.style.top = "0";
+        img.style.left = "0";
+        img.style.zIndex = "1"; // behind the + sign
+        box.appendChild(img);
+
+        // keep + sign in corner
+        const plus = box.querySelector(".plus-sign");
+        plus.style.position = "absolute";
+        plus.style.top = "5px";
+        plus.style.right = "5px";
+        plus.style.zIndex = "10";
+    }
+});
+
+// NIN file preview & size check
+ninInput.addEventListener("change", () => {
+    const file = ninInput.files[0];
+    const box = document.getElementById("nin-box");
+
+    // remove previous preview
+    const existingImg = box.querySelector("img");
+    if (existingImg) existingImg.remove();
+
+    if (file) {
+        if (file.size > 100 * 1024) { // 100 KB
+            ninError.style.display = "block";
+            ninInput.value = "";
+            return;
+        } else {
+            ninError.style.display = "none";
+        }
+
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.objectFit = "cover";
+        img.style.position = "absolute";
+        img.style.top = "0";
+        img.style.left = "0";
+        img.style.zIndex = "1"; // behind the + sign
+        box.appendChild(img);
+
+        // keep + sign in corner
+        const plus = box.querySelector(".plus-sign");
+        plus.style.position = "absolute";
+        plus.style.top = "5px";
+        plus.style.right = "5px";
+        plus.style.zIndex = "10";
+    }
+});
+
+
+
+// Auto-calculate age from DOB
+const dobInput = document.getElementById("dob");
+const ageDisplay = document.getElementById("age-display");
+
+dobInput.addEventListener("change", () => {
+    const dobValue = dobInput.value;
+    if (dobValue) {
+        const today = new Date();
+        const birthDate = new Date(dobValue);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        ageDisplay.textContent = `Age: ${age}`;
+    } else {
+        ageDisplay.textContent = "";
+    }
+});
 
 // Form submission logic
 const form = document.getElementById("registration-form");
@@ -110,18 +220,53 @@ form.addEventListener("submit", async(e) => {
     e.preventDefault();
     console.log("Form submission triggered!");
 
+    // Get uploaded files
+    const passportFile = form["passport"].files[0];
+    const ninFile = form["nin"].files[0];
+
+    // Upload files to Firebase Storage
+    const passportRef = ref(storage, `passport/${Date.now()}_${passportFile.name}`);
+    const ninRef = ref(storage, `nin/${Date.now()}_${ninFile.name}`);
+
+    const passportSnapshot = await uploadBytes(passportRef, passportFile);
+    const ninSnapshot = await uploadBytes(ninRef, ninFile);
+
+    const passportURL = await getDownloadURL(passportSnapshot.ref);
+    const ninURL = await getDownloadURL(ninSnapshot.ref);
+
+
+    // Calculate age from DOB
+    const dobValue = form["dob"].value;
+    let age = "";
+    if (dobValue) {
+        const today = new Date();
+        const birthDate = new Date(dobValue);
+        age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+    }
+
+
     const formData = {
         firstName: form["first_name"].value.trim(),
         middleName: form["middle_name"].value.trim(),
         lastName: form["last_name"].value.trim(),
         phone: form["phone"].value.trim(),
         email: form["email"].value.trim(),
-        dob: form["dob"].value,
+        dob: dobValue,
+        age: age, // Now we store the calculated age
         state: form["state"].value,
         lga: form["lga"].value,
         address: form["address"].value.trim(),
-
         areaOfTraining: form["training_area"].value,
+        sex: form["sex"].value,
+        passportURL: passportURL,
+        ninURL: ninURL,
+
+
+
         timestamp: new Date()
     };
 
