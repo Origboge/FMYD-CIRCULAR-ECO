@@ -89,7 +89,7 @@ document.getElementById("state").addEventListener("change", () => {
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
-import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app-check.js";
+
 
 // Firebase config
 const firebaseConfig = {
@@ -102,20 +102,12 @@ const firebaseConfig = {
     measurementId: "G-0NNZQMP7TB"
 };
 
-// 1️⃣ Init Firebase
+// Init Firebase
 const app = initializeApp(firebaseConfig);
-
-// 2️⃣ Enable App Check (replace YOUR_SITE_KEY with the one from Firebase console)
-initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider("Y6LdnMKYrAAAAABFmUxHLpIv9VagA73xNakZmWp_i"),
-    isTokenAutoRefreshEnabled: true // keeps token valid in background
-});
-
-// 3️⃣ Init Firestore & Storage AFTER App Check is set up
-const db = getFirestore(app);
 const storage = getStorage(app);
 
-// File inputs and error messages 
+const db = getFirestore(app);
+// File inputs and error messages
 const passportInput = document.getElementById("passport");
 const passportError = document.getElementById("passport-error");
 
