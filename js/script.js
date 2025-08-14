@@ -96,7 +96,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyDpERMUEG6z7JsFuz-0K_106v5pZamLSVk",
     authDomain: "fmyd-circular-eco-registration.firebaseapp.com",
     projectId: "fmyd-circular-eco-registration",
-    storageBucket: "fmyd-circular-eco-registration.appspot.com",
+    storageBucket: "fmyd-circular-eco-registration.firebasestorage.app",
     messagingSenderId: "75870394524",
     appId: "1:75870394524:web:98ec8481ac5f5820a87559",
     measurementId: "G-0NNZQMP7TB"
