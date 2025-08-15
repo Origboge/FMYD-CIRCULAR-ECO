@@ -101,8 +101,7 @@
                         font-size: 20px;
                         font-style: italic;
                     }
-                    
-                    .register-btn {
+                    /* .register-btn {
                         margin: 20px 0;
                         padding: 12px 25px;
                         font-weight: bold;
@@ -111,6 +110,37 @@
                         background-color: hsl(138, 84%, 29%);
                         border: none;
                         transition: transform 0.3s ease, background-color 0.3s ease;
+                        z-index: 10;
+                    }
+                    
+                    .register-btn:hover {
+                        background-color: #146c43;
+                        transform: scale(1.05);
+                    } */
+                    
+                    .register-wrapper {
+                        text-align: center;
+                        /* Center the button */
+                        margin-top: 20px;
+                        /* Space above the button */
+                        position: relative;
+                        z-index: 10;
+                        /* Ensure it sits above background layers */
+                    }
+                    
+                    .register-btn {
+                        display: inline-block;
+                        padding: 12px 30px;
+                        font-weight: bold;
+                        font-size: 1rem;
+                        color: #fff;
+                        /* Text color */
+                        background-color: hsl(138, 84%, 29%);
+                        /* Solid color for contrast */
+                        border-radius: 6px;
+                        text-decoration: none;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                        transition: all 0.3s ease;
                     }
                     
                     .register-btn:hover {
