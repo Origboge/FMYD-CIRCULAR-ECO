@@ -73,7 +73,8 @@ document.getElementById("state").addEventListener("change", () => {
 
 
 // Import the functions you need from the SDKs you need
-import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app-check.js";
+import { initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
@@ -97,14 +98,21 @@ const db = getFirestore(app);
 
 
 // Initialize App Check
-const appCheck = initializeAppCheck(app, {
+
+initializeAppCheck(app, {
     provider: new ReCaptchaV3Provider('6LdnMKYrAAAAABFmUxHLpIv9VagA73xNakZmWp_i'),
-
-    // Enable token auto-refresh
-    isTokenAutoRefreshEnabled: true,
-
-
+    isDevDebugMode: false // Keep this false for production!
 });
+
+// >>> THIS IS WHERE YOU CONTROL TOKEN AUTO-REFRESH <<<
+// By default, App Check typically tries to refresh tokens automatically.
+// However, you can explicitly set it:
+setTokenAutoRefreshEnabled(appCheckInstance, true); // Set to 'true' to enable auto-refresh
+
+// You can also disable it if you had a very specific reason (unlikely for most apps),
+// but generally, you want it enabled for a smooth user experience.
+// setTokenAutoRefreshEnabled(appCheckInstance, false); // Set to 'false' to disable auto-refresh
+
 // Helper to upload a file and get its URL
 async function uploadFile(file, folder) {
     const timestamp = Date.now();
