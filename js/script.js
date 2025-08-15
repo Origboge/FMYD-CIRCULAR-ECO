@@ -1,9 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // EVERYTHING in your file goes inside here —
-    // state/LGA array, population logic, form submit handlers, Firebase setup, etc.
-});
+// =======================================================
+// === 1. ALL IMPORT STATEMENTS GO HERE, AT THE TOP ===
+// =======================================================
+import { initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaV3Provider, setTokenAutoRefreshEnabled } from 'firebase/app-check'; // Added setTokenAutoRefreshEnabled
+import { getFirestore, collection, addDoc } from "firebase/firestore"; // Corrected import
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Corrected import
 
-// Full Nigeria states and LGAs:
+
+// =======================================================
+// === 2. GLOBAL DATA / CONSTANTS (like stataLGAs) GO HERE ===
+// =======================================================
 const stataLGAs = {
     "Abia": ["Aba North", "Aba South", "Arochukwu", "Bende", "Ikwuano", "Isiala Ngwa North", "Isiala Ngwa South", "Isuikwuato", "Obi Ngwa", "Ohafia", "Osisioma", "Ugwunagbo", "Ukwa East", "Ukwa West", "Umuahia North", "Umuahia South", "Umu Nneochi"],
     "Adamawa": ["Demsa", "Fufore", "Ganye", "Girei", "Gombi", "Guyuk", "Hong", "Jada", "Lamurde", "Madagali", "Maiha", "Mayo Belwa", "Michika", "Mubi North", "Mubi South", "Numan", "Shelleng", "Song", "Toungo", "Yola North", "Yola South"],
@@ -22,8 +28,6 @@ const stataLGAs = {
     "Gombe": ["Akko", "Balanga", "Billiri", "Dukku", "Funakaye", "Gombe", "Kaltungo", "Kwami", "Nafada", "Shongom", "Yamaltu/Deba"],
     "Imo": ["Aboh Mbaise", "Ahiazu Mbaise", "Ehime Mbano", "Ezinihitte", "Ideato North", "Ideato South", "Ihitte/Uboma", "Ikeduru", "Isiala Mbano", "Isu", "Mbaitoli", "Ngor Okpala", "Njaba", "Nkwerre", "Nwangele", "Obowo", "Oguta", "Ohaji/Egbema", "Okigwe", "Orlu", "Orsu", "Oru East", "Oru West", "Owerri Municipal", "Owerri North", "Owerri West"],
     "Jigawa": ["Auyo", "Babura", "Biriniwa", "Birnin Kudu", "Buji", "Dutse", "Gagarawa", "Garki", "Gumel", "Guri", "Gwaram", "Gwiwa", "Hadejia", "Jahun", "Kafin Hausa", "Kaugama", "Kazaure", "Kiri Kasama", "Kiyawa", "Maigatari", "Malam Madori", "Miga", "Ringim", "Roni", "Sule-Tankarkar", "Taura", "Yankwashi"],
-
-
     "Kaduna": ["Birnin Gwari", "Chikun", "Giwa", "Igabi", "Ikara", "Jaba", "Jema'a", "Kachia", "Kaduna North", "Kaduna South", "Kagarko", "Kajuru", "Kaura", "Kauru", "Kubau", "Kudan", "Lere", "Makarfi", "Sabon Gari", "Sanga", "Soba", "Zangon Kataf", "Zaria"],
     "Kano": ["Ajingi", "Albasu", "Bagwai", "Bebeji", "Bichi", "Bunkure", "Dala", "Dambatta", "Dawakin Kudu", "Dawakin Tofa", "Doguwa", "Fagge", "Gabasawa", "Garko", "Garun Mallam", "Gaya", "Gezawa", "Gwale", "Gwarzo", "Kabo", "Kano Municipal", "Karaye", "Kibiya", "Kiru", "Kumbotso", "Kunchi", "Kura", "Madobi", "Makoda", "Minjibir", "Nasarawa", "Rano", "Rimin Gado", "Rogo", "Shanono", "Sumaila", "Takai", "Tarauni", "Tofa", "Tsanyawa", "Tudun Wada", "Ungogo", "Warawa", "Wudil"],
     "Katsina": ["Bakori", "Batagarawa", "Batsari", "Baure", "Bindawa", "Charanchi", "Dandume", "Danja", "Dan Musa", "Daura", "Dutsi", "Dutsin Ma", "Faskari", "Funtua", "Ingawa", "Jibia", "Kafur", "Kaita", "Kankara", "Kankia", "Katsina", "Kurfi", "Kusada", "Mai’Adua", "Malumfashi", "Mani", "Mashi", "Matazu", "Musawa", "Rimi", "Sabuwa", "Safana", "Sandamu", "Zango"],
@@ -39,280 +43,315 @@ const stataLGAs = {
     "Oyo": ["Afijio", "Akinyele", "Atiba", "Atisbo", "Egbeda", "Ibadan North", "Ibadan North-East", "Ibadan North-West", "Ibadan South-East", "Ibadan South-West", "Ibarapa Central", "Ibarapa East", "Ibarapa North", "Ido", "Irepo", "Iseyin", "Itesiwaju", "Iwajowa", "Kajola", "Lagelu", "Ogbomosho North", "Ogbomosho South", "Ogo Oluwa", "Olorunsogo", "Oluyole", "Ona Ara", "Orelope", "Ori Ire", "Oyo East", "Oyo West", "Saki East", "Saki West", "Surulere"],
     "Plateau": ["Barkin Ladi", "Bassa", "Bokkos", "Jos East", "Jos North", "Jos South", "Kanam", "Kanke", "Langtang North", "Langtang South", "Mangu", "Mikang", "Pankshin", "Qua’an Pan", "Riyom", "Shendam", "Wase"],
     "Rivers": ["Abua/Odual", "Ahoada East", "Ahoada West", "Akuku-Toru", "Andoni", "Asari-Toru", "Bonny", "Degema", "Eleme", "Emuoha", "Etche", "Gokana", "Ikwerre", "Khana", "Obio/Akpor", "Ogba/Egbema/Ndoni", "Ogu/Bolo", "Okrika", "Omuma", "Opobo/Nkoro", "Oyigbo", "Port Harcourt", "Tai"],
-
-
     "Sokoto": ["Binji", "Bodinga", "Dange Shuni", "Gada", "Goronyo", "Gudu", "Gwadabawa", "Illela", "Isa", "Kebbe", "Kware", "Rabah", "Sabon Birni", "Shagari", "Silame", "Sokoto North", "Sokoto South", "Tambuwal", "Tangaza", "Tureta", "Wamako", "Wurno", "Yabo"],
     "Taraba": ["Ardo Kola", "Bali", "Donga", "Gashaka", "Gassol", "Ibi", "Jalingo", "Karim Lamido", "Kumi", "Lau", "Sardauna", "Takum", "Ussa", "Wukari", "Yorro", "Zing"],
     "Yobe": ["Bade", "Bursari", "Damaturu", "Fika", "Fune", "Geidam", "Gujba", "Gulani", "Jakusko", "Karasuwa", "Machina", "Nangere", "Nguru", "Potiskum", "Tarmuwa", "Yunusari", "Yusufari"],
     "Zamfara": ["Anka", "Bakura", "Birnin Magaji/Kiyaw", "Bukkuyum", "Bungudu", "Gummi", "Gusau", "Kaura Namoda", "Maradun", "Maru", "Shinkafi", "Talata Mafara", "Tsafe", "Zurmi"]
 };
 
-// Populate state dropdown
-const state = document.getElementById("state");
-Object.keys(stataLGAs).forEach(s => {
-    const opt = document.createElement("option");
-    opt.value = s;
-    opt.textContent = s;
-    state.appendChild(opt);
-});
 
-// When state selected -> populate LGA list
-document.getElementById("state").addEventListener("change", () => {
-    const lga = document.getElementById("lga");
-    lga.innerHTML = '<option value="">Select LGA</option>';
-    const list = stataLGAs[state.value] || [];
-    list.forEach(item => {
-        const opt = document.createElement("option");
-        opt.value = item;
-        opt.textContent = item;
-        lga.appendChild(opt);
-    });
-});
-
-// Enable debug token for App Check locally
-
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
-
-
-// Firebase config
-const firebaseConfig = {
-    apiKey: "AIzaSyDpERMUEG6z7JsFuz-0K_106v5pZamLSVk",
-    authDomain: "fmyd-circular-eco-registration.firebaseapp.com",
-    projectId: "fmyd-circular-eco-registration",
-    storageBucket: "fmyd-circular-eco-registration.firebasestorage.app",
-    messagingSenderId: "75870394524",
-    appId: "1:75870394524:web:98ec8481ac5f5820a87559",
-    measurementId: "G-0NNZQMP7TB"
-};
-
-// Init Firebase
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
-const db = getFirestore(app);
-
-
-// Initialize App Check
-
-initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('6LdnMKYrAAAAABFmUxHLpIv9VagA73xNakZmWp_i'),
-    isDevDebugMode: false // Keep this false for production!
-});
-
-// >>> THIS IS WHERE YOU CONTROL TOKEN AUTO-REFRESH <<<
-// By default, App Check typically tries to refresh tokens automatically.
-// However, you can explicitly set it:
-setTokenAutoRefreshEnabled(appCheckInstance, true); // Set to 'true' to enable auto-refresh
-
-// You can also disable it if you had a very specific reason (unlikely for most apps),
-// but generally, you want it enabled for a smooth user experience.
-// setTokenAutoRefreshEnabled(appCheckInstance, false); // Set to 'false' to disable auto-refresh
-
-// Helper to upload a file and get its URL
-async function uploadFile(file, folder) {
-    const timestamp = Date.now();
-    const fileRef = ref(storage, `${folder}/${timestamp}_${file.name}`);
-    await uploadBytes(fileRef, file);
-    return getDownloadURL(fileRef);
-}
-
-
-// File inputs and error messages
-const passportInput = document.getElementById("passport");
-const passportError = document.getElementById("passport-error");
-
-const ninInput = document.getElementById("nin");
-const ninError = document.getElementById("nin-error");
-
-
-// Passport file preview & size check
-passportInput.addEventListener("change", () => {
-    const file = passportInput.files[0];
-    const box = document.getElementById("passport-box");
-
-    // remove previous preview
-    const existingImg = box.querySelector("img");
-    if (existingImg) existingImg.remove();
-
-    if (file) {
-        if (file.size > 100 * 1024) { // 100 KB
-            passportError.style.display = "block";
-            passportInput.value = "";
-            return;
-        } else {
-            passportError.style.display = "none";
-        }
-
-        const img = document.createElement("img");
-        img.src = URL.createObjectURL(file);
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "cover";
-        img.style.position = "absolute";
-        img.style.top = "0";
-        img.style.left = "0";
-        img.style.zIndex = "1"; // behind the + sign
-        box.appendChild(img);
-
-        // keep + sign in corner
-        const plus = box.querySelector(".plus-sign");
-        plus.style.position = "absolute";
-        plus.style.top = "5px";
-        plus.style.right = "5px";
-        plus.style.zIndex = "10";
-    }
-});
-
-// NIN file preview & size check
-ninInput.addEventListener("change", () => {
-    const file = ninInput.files[0];
-    const box = document.getElementById("nin-box");
-
-    // remove previous preview
-    const existingImg = box.querySelector("img");
-    if (existingImg) existingImg.remove();
-
-    if (file) {
-        if (file.size > 100 * 1024) { // 100 KB
-            ninError.style.display = "block";
-            ninInput.value = "";
-            return;
-        } else {
-            ninError.style.display = "none";
-        }
-
-        const img = document.createElement("img");
-        img.src = URL.createObjectURL(file);
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "cover";
-        img.style.position = "absolute";
-        img.style.top = "0";
-        img.style.left = "0";
-        img.style.zIndex = "1"; // behind the + sign
-        box.appendChild(img);
-
-        // keep + sign in corner
-        const plus = box.querySelector(".plus-sign");
-        plus.style.position = "absolute";
-        plus.style.top = "5px";
-        plus.style.right = "5px";
-        plus.style.zIndex = "10";
-    }
-});
-
-
-
-// Auto-calculate age from DOB
-const dobInput = document.getElementById("dob");
-const ageDisplay = document.getElementById("age-display");
-
-dobInput.addEventListener("change", () => {
-    const dobValue = dobInput.value;
-    if (dobValue) {
-        const today = new Date();
-        const birthDate = new Date(dobValue);
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        ageDisplay.textContent = `Age: ${age}`;
+// =======================================================
+// === 3. ALL DOM-RELATED CODE GOES INSIDE DOMContentLoaded ===
+// =======================================================
+document.addEventListener("DOMContentLoaded", () => {
+    // Populate state dropdown
+    const state = document.getElementById("state");
+    // Ensure state dropdown exists before appending to it, addressing potential null issues
+    if (state) { // Added null check
+        Object.keys(stataLGAs).forEach(s => {
+            const opt = document.createElement("option");
+            opt.value = s;
+            opt.textContent = s;
+            state.appendChild(opt);
+        });
     } else {
-        ageDisplay.textContent = "";
-    }
-});
-
-// Form submission logic
-const form = document.getElementById("registration-form");
-
-form.addEventListener("submit", async(e) => {
-    e.preventDefault();
-    console.log("Form submission triggered!");
-
-    // Get uploaded files
-    const passportFile = form["passport"].files[0];
-    const ninFile = form["nin"].files[0];
-
-    // Upload files to Firebase Storage
-    const passportRef = ref(storage, `passport/${Date.now()}_${passportFile.name}`);
-    const ninRef = ref(storage, `nin/${Date.now()}_${ninFile.name}`);
-
-    const passportSnapshot = await uploadBytes(passportRef, passportFile);
-    const ninSnapshot = await uploadBytes(ninRef, ninFile);
-
-    const passportURL = await getDownloadURL(passportSnapshot.ref);
-    const ninURL = await getDownloadURL(ninSnapshot.ref);
-
-
-    // Calculate age from DOB
-    const dobValue = form["dob"].value;
-    let age = "";
-    if (dobValue) {
-        const today = new Date();
-        const birthDate = new Date(dobValue);
-        age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
+        console.error("State dropdown element not found!"); // Log if element is missing
     }
 
 
-    const formData = {
-        firstName: form["first_name"].value.trim(),
-        middleName: form["middle_name"].value.trim(),
-        lastName: form["last_name"].value.trim(),
-        phone: form["phone"].value.trim(),
-        email: form["email"].value.trim(),
-        dob: dobValue,
-        age: age, // Now we store the calculated age
-        state: form["state"].value,
-        lga: form["lga"].value,
-        address: form["address"].value.trim(),
-        areaOfTraining: form["training_area"].value,
-        sex: form["sex"].value,
-        passportURL: passportURL,
-        ninURL: ninURL,
+    // When state selected -> populate LGA list
+    // Ensure state and lga elements exist before adding listeners/manipulating
+    const stateSelect = document.getElementById("state");
+    const lgaSelect = document.getElementById("lga");
+
+    if (stateSelect && lgaSelect) { // Added null check for both
+        stateSelect.addEventListener("change", () => {
+            lgaSelect.innerHTML = '<option value="">Select LGA</option>';
+            const list = stataLGAs[stateSelect.value] || []; // Use stateSelect here
+            list.forEach(item => {
+                const opt = document.createElement("option");
+                opt.value = item;
+                opt.textContent = item;
+                lgaSelect.appendChild(opt); // Use lgaSelect here
+            });
+        });
+    } else {
+        console.error("State or LGA dropdown element not found!"); // Log if elements are missing
+    }
 
 
-
-        timestamp: new Date()
+    // Firebase config (should be inside DOMContentLoaded or global if no DOM interaction needed)
+    const firebaseConfig = {
+        apiKey: "AIzaSyDpERMUEG6z7JsFuz-0K_106v5pZamLSVk",
+        authDomain: "fmyd-circular-eco-registration.firebaseapp.com",
+        projectId: "fmyd-circular-eco-registration",
+        storageBucket: "fmyd-circular-eco-registration.firebasestorage.app",
+        messagingSenderId: "75870394524",
+        appId: "1:75870394524:web:98ec8481ac5f5820a87559",
+        measurementId: "G-0NNZQMP7TB"
     };
 
-    try {
-        await addDoc(collection(db, "registrations"), formData);
-        // Show loading spinner
-        const formStatus = document.getElementById("form-status");
-        const loadingSpinner = document.getElementById("loading-spinner");
-        const successCheck = document.getElementById("success-check");
+    // Init Firebase
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+    const db = getFirestore(app);
 
-        formStatus.style.display = "block";
-        loadingSpinner.style.display = "inline-block";
-        successCheck.style.display = "none";
 
-        // Simulate a delay (e.g. writing to Firestore)
-        setTimeout(() => {
-            loadingSpinner.style.display = "none";
-            successCheck.style.display = "block";
+    // Initialize App Check
+    const appCheckInstance = initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider('6LdnMKYrAAAAABFmUxHLpIv9VagA73xNakZmWp_i'),
+        isDevDebugMode: false // Keep this false for production!
+    });
 
-            // Clear form
-            form.reset();
+    setTokenAutoRefreshEnabled(appCheckInstance, true); // Use the imported function
 
-            // Optional: hide success after a few seconds
-            setTimeout(() => {
-                formStatus.style.display = "none";
-            }, 3000);
-        }, 2500); // 2.5 seconds
 
-    } catch (error) {
-        console.error("Error writing to Firestore:", error);
-        alert("Error: registration not saved.");
+    // Helper to upload a file and get its URL
+    async function uploadFile(file, folder) {
+        const timestamp = Date.now();
+        const fileRef = ref(storage, `${folder}/${timestamp}_${file.name}`);
+        await uploadBytes(fileRef, file);
+        return getDownloadURL(fileRef);
     }
 
+
+    // File inputs and error messages
+    const passportInput = document.getElementById("passport");
+    const passportError = document.getElementById("passport-error");
+
+    const ninInput = document.getElementById("nin");
+    const ninError = document.getElementById("nin-error");
+
+
+    // Passport file preview & size check
+    if (passportInput && passportError) { // Added null checks
+        passportInput.addEventListener("change", () => {
+            const file = passportInput.files[0];
+            const box = document.getElementById("passport-box");
+
+            // remove previous preview
+            const existingImg = box.querySelector("img");
+            if (existingImg) existingImg.remove();
+
+            if (file) {
+                if (file.size > 100 * 1024) { // 100 KB
+                    passportError.style.display = "block";
+                    passportInput.value = "";
+                    return;
+                } else {
+                    passportError.style.display = "none";
+                }
+
+                if (box) { // Added null check for 'box' before using appendChild
+                    const img = document.createElement("img");
+                    img.src = URL.createObjectURL(file);
+                    img.style.width = "100%";
+                    img.style.height = "100%";
+                    img.style.objectFit = "cover";
+                    img.style.position = "absolute";
+                    img.style.top = "0";
+                    img.style.left = "0";
+                    img.style.zIndex = "1"; // behind the + sign
+                    box.appendChild(img); // <-- This was line 55 in your previous error
+
+                    // keep + sign in corner
+                    const plus = box.querySelector(".plus-sign");
+                    if (plus) { // Added null check
+                        plus.style.position = "absolute";
+                        plus.style.top = "5px";
+                        plus.style.right = "5px";
+                        plus.style.zIndex = "10";
+                    }
+                } else {
+                    console.error("Passport box element not found!");
+                }
+            }
+        });
+    } else {
+        console.error("Passport input or error display element not found!");
+    }
+
+
+    // NIN file preview & size check
+    if (ninInput && ninError) { // Added null checks
+        ninInput.addEventListener("change", () => {
+            const file = ninInput.files[0];
+            const box = document.getElementById("nin-box");
+
+            // remove previous preview
+            const existingImg = box.querySelector("img");
+            if (existingImg) existingImg.remove();
+
+            if (file) {
+                if (file.size > 100 * 1024) { // 100 KB
+                    ninError.style.display = "block";
+                    ninInput.value = "";
+                    return;
+                } else {
+                    ninError.style.display = "none";
+                }
+
+                if (box) { // Added null check for 'box' before using appendChild
+                    const img = document.createElement("img");
+                    img.src = URL.createObjectURL(file);
+                    img.style.width = "100%";
+                    img.style.height = "100%";
+                    img.style.objectFit = "cover";
+                    img.style.position = "absolute";
+                    img.style.top = "0";
+                    img.style.left = "0";
+                    img.style.zIndex = "1"; // behind the + sign
+                    box.appendChild(img);
+
+                    // keep + sign in corner
+                    const plus = box.querySelector(".plus-sign");
+                    if (plus) { // Added null check
+                        plus.style.position = "absolute";
+                        plus.style.top = "5px";
+                        plus.style.right = "5px";
+                        plus.style.zIndex = "10";
+                    }
+                } else {
+                    console.error("NIN box element not found!");
+                }
+            }
+        });
+    } else {
+        console.error("NIN input or error display element not found!");
+    }
+
+
+    // Auto-calculate age from DOB
+    const dobInput = document.getElementById("dob");
+    const ageDisplay = document.getElementById("age-display");
+
+    if (dobInput && ageDisplay) { // Added null checks
+        dobInput.addEventListener("change", () => {
+            const dobValue = dobInput.value;
+            if (dobValue) {
+                const today = new Date();
+                const birthDate = new Date(dobValue);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                ageDisplay.textContent = `Age: ${age}`;
+            } else {
+                ageDisplay.textContent = "";
+            }
+        });
+    } else {
+        console.error("Date of Birth input or Age Display element not found!");
+    }
+
+
+    // Form submission logic
+    const form = document.getElementById("registration-form");
+
+    if (form) { // Added null check
+        form.addEventListener("submit", async(e) => {
+            e.preventDefault();
+            console.log("Form submission triggered!");
+
+            // Get uploaded files
+            const passportFile = form["passport"].files[0];
+            const ninFile = form["nin"].files[0];
+
+            // Ensure files are selected before proceeding with upload
+            if (!passportFile || !ninFile) {
+                alert("Please select both Passport and NIN files.");
+                return;
+            }
+
+            // Upload files to Firebase Storage
+            const passportRef = ref(storage, `passport/${Date.now()}_${passportFile.name}`);
+            const ninRef = ref(storage, `nin/${Date.now()}_${ninFile.name}`);
+
+            const passportSnapshot = await uploadBytes(passportRef, passportFile);
+            const ninSnapshot = await uploadBytes(ninRef, ninFile);
+
+            const passportURL = await getDownloadURL(passportSnapshot.ref);
+            const ninURL = await getDownloadURL(ninSnapshot.ref);
+
+
+            // Calculate age from DOB
+            const dobValue = form["dob"].value;
+            let age = "";
+            if (dobValue) {
+                const today = new Date();
+                const birthDate = new Date(dobValue);
+                age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+            }
+
+
+            const formData = {
+                firstName: form["first_name"].value.trim(),
+                middleName: form["middle_name"].value.trim(),
+                lastName: form["last_name"].value.trim(),
+                phone: form["phone"].value.trim(),
+                email: form["email"].value.trim(),
+                dob: dobValue,
+                age: age, // Now we store the calculated age
+                state: form["state"].value,
+                lga: form["lga"].value,
+                address: form["address"].value.trim(),
+                areaOfTraining: form["training_area"].value,
+                sex: form["sex"].value,
+                passportURL: passportURL,
+                ninURL: ninURL,
+                timestamp: new Date()
+            };
+
+            try {
+                await addDoc(collection(db, "registrations"), formData);
+                // Show loading spinner
+                const formStatus = document.getElementById("form-status");
+                const loadingSpinner = document.getElementById("loading-spinner");
+                const successCheck = document.getElementById("success-check");
+
+                if (formStatus && loadingSpinner && successCheck) { // Added null checks
+                    formStatus.style.display = "block";
+                    loadingSpinner.style.display = "inline-block";
+                    successCheck.style.display = "none";
+
+                    // Simulate a delay (e.g. writing to Firestore)
+                    setTimeout(() => {
+                        loadingSpinner.style.display = "none";
+                        successCheck.style.display = "block";
+
+                        // Clear form
+                        form.reset();
+
+                        // Optional: hide success after a few seconds
+                        setTimeout(() => {
+                            formStatus.style.display = "none";
+                        }, 3000);
+                    }, 2500); // 2.5 seconds
+                } else {
+                    console.error("Form status elements (form-status, loading-spinner, success-check) not found!");
+                }
+
+            } catch (error) {
+                console.error("Error writing to Firestore:", error);
+                alert("Error: registration not saved.");
+            }
+        });
+    } else {
+        console.error("Registration form element not found!");
+    }
 });
