@@ -1,17 +1,3 @@
-// gsap.registerPlugin(ScrollTrigger);
-
-// gsap.utils.toArray(".training-box").forEach(box => {
-//     ScrollTrigger.create({
-//         trigger: box,
-//         start: "top 90%",
-//         onEnter: () => {
-//             gsap.fromTo(box, { x: gsap.utils.random(-100, 100), y: gsap.utils.random(-100, 100), opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.8, ease: "power4.out" });
-//         },
-//         onEnterBack: () => {
-//             gsap.fromTo(box, { x: gsap.utils.random(-100, 100), y: gsap.utils.random(-100, 100), opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.8, ease: "power4.out" });
-//         },
-//     });
-// });
 document.addEventListener("DOMContentLoaded", () => {
     // EVERYTHING in your file goes inside here —
     // state/LGA array, population logic, form submit handlers, Firebase setup, etc.
@@ -83,9 +69,11 @@ document.getElementById("state").addEventListener("change", () => {
     });
 });
 
+// Enable debug token for App Check locally
 
 
 // Import the functions you need from the SDKs you need
+import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app-check.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
@@ -105,8 +93,27 @@ const firebaseConfig = {
 // Init Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
-
 const db = getFirestore(app);
+
+
+// Initialize App Check
+const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LdnMKYrAAAAABFmUxHLpIv9VagA73xNakZmWp_i'),
+
+    // Enable token auto-refresh
+    isTokenAutoRefreshEnabled: true,
+
+
+});
+// Helper to upload a file and get its URL
+async function uploadFile(file, folder) {
+    const timestamp = Date.now();
+    const fileRef = ref(storage, `${folder}/${timestamp}_${file.name}`);
+    await uploadBytes(fileRef, file);
+    return getDownloadURL(fileRef);
+}
+
+
 // File inputs and error messages
 const passportInput = document.getElementById("passport");
 const passportError = document.getElementById("passport-error");
@@ -294,7 +301,7 @@ form.addEventListener("submit", async(e) => {
                 formStatus.style.display = "none";
             }, 3000);
         }, 2500); // 2.5 seconds
-        form.reset();
+
     } catch (error) {
         console.error("Error writing to Firestore:", error);
         alert("Error: registration not saved.");
