@@ -13,7 +13,7 @@
 
 
 
-  <script type="module" crossorigin src="/FMYD-CIRCULAR-ECO/assets/script-Bn6KiUnU.js"></script>
+  <script type="module" crossorigin src="/FMYD-CIRCULAR-ECO/assets/script-BcdfF8cQ.js"></script>
   <link rel="stylesheet" crossorigin href="/FMYD-CIRCULAR-ECO/assets/script-BX5mXK2v.css">
 </head>
 
@@ -147,7 +147,7 @@
           <option>Energy & Community Solutions</option>
         </select>
                     </div>
-                    <div id="form-status" style="display: none; text-align: center; margin-top: 20px;">
+                    <!-- <div id="form-status" style="display: none; text-align: center; margin-top: 20px;">
                         <div id="loading-spinner" class="spinner-border text-primary" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
@@ -155,7 +155,7 @@
                             <i class="bi bi-check-circle-fill" style="color: green; font-size: 2rem;"></i>
                             <p style="color: green;">Submitted!</p>
                         </div>
-                    </div>
+                    </div> -->
                     <button type="submit" class="submit-btn">Submit Registration</button>
                 </form>
             </div>
@@ -251,6 +251,37 @@
                 pageContent.classList.add('show');
             });
         </script>
+        <!-- New Full-Page Submission Overlay -->
+        <div id="submission-overlay">
+            <div class="overlay-content">
+                <!-- Loading Spinner -->
+                <div id="overlay-loading-spinner" class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+
+                <!-- Success Message (initially hidden) -->
+                <div id="overlay-success-message">
+                    <i class="bi bi-check-circle-fill" style="color: green; font-size: 3.5rem;"></i>
+                    <p style="color: green; font-size: 1.6rem; margin-top: 15px; font-weight: 600;">Registration Submitted Successfully!</p>
+                    <button id="overlay-close-btn" class="btn btn-success mt-4">Close</button>
+                </div>
+
+                <!-- Error Message (initially hidden) -->
+                <div id="overlay-error-message">
+                    <i class="bi bi-x-circle-fill" style="color: red; font-size: 3.5rem;"></i>
+                    <p style="color: red; font-size: 1.6rem; margin-top: 15px; font-weight: 600;">Submission Failed. Please try again.</p>
+                    <button id="overlay-error-close-btn" class="btn btn-danger mt-4">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your existing scripts -->
+        <!-- ... other scripts ... -->
+
+</body>
+
+</html>
+
 </body>
 
 
