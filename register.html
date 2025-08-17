@@ -13,7 +13,7 @@
 
 
 
-  <script type="module" crossorigin src="/FMYD-CIRCULAR-ECO/assets/script-BhjV1MUv.js"></script>
+  <script type="module" crossorigin src="/FMYD-CIRCULAR-ECO/assets/script-BncjVSjH.js"></script>
   <link rel="stylesheet" crossorigin href="/FMYD-CIRCULAR-ECO/assets/script-CyV2WzvA.css">
 </head>
 
@@ -66,19 +66,30 @@
                 <form id="registration-form">
                     <h4 class="mt-4" style="color: hsl(138, 84%, 29%);">Personal Information</h4>
                     <hr>
-                    <div class="form-group name-group">
+                    <!-- <div class="form-group name-group">
                         <input type="text" name="first_name" placeholder="First Name" required>
                         <input type="text" name="middle_name" placeholder="Middle Name">
                         <input type="text" name="last_name" placeholder="Last Name" required>
+                    </div> -->
+                    <div class="form-group name-group">
+                        <input type="text" id="first_name" name="first_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="First Name" required>
+                        <span id="first-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
+
+                        <input type="text" id="middle_name" name="middle_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="Middle Name" required>
+                        <span id="middle-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
+
+                        <input type="text" id="last_name" name="last_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="Last Name" required>
+                        <span id="last-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
                     </div>
 
                     <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Phone Number" required>
-
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email Address" required></div>
 
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" pattern="^\+?[0-9\s\-]+$" title="Only numbers, '+', spaces, and hyphens are allowed (e.g., +234 801-234-5678)." required>
+                        <span id="phone-error-live" style="color: red; font-size: 0.85em; display: none;">Only numbers, '+', spaces, and hyphens allowed.</span>
+                    </div>
                     <div class="form-group">
                         <label>Date of Birth</label>
                         <input type="date" id="dob" name="dob" required>
