@@ -66,19 +66,30 @@
                 <form id="registration-form">
                     <h4 class="mt-4" style="color: hsl(138, 84%, 29%);">Personal Information</h4>
                     <hr>
-                    <div class="form-group name-group">
+                    <!-- <div class="form-group name-group">
                         <input type="text" name="first_name" placeholder="First Name" required>
                         <input type="text" name="middle_name" placeholder="Middle Name">
                         <input type="text" name="last_name" placeholder="Last Name" required>
+                    </div> -->
+                    <div class="form-group name-group">
+                        <input type="text" id="first_name" name="first_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="First Name" required>
+                        <span id="first-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
+
+                        <input type="text" id="middle_name" name="middle_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="Middle Name" required>
+                        <span id="middle-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
+
+                        <input type="text" id="last_name" name="last_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="Last Name" required>
+                        <span id="last-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
                     </div>
 
                     <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Phone Number" required>
-
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email Address" required></div>
 
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" pattern="^\+?[0-9\s\-]+$" title="Only numbers, '+', spaces, and hyphens are allowed (e.g., +234 801-234-5678)." required>
+                        <span id="phone-error-live" style="color: red; font-size: 0.85em; display: none;">Only numbers, '+', spaces, and hyphens allowed.</span>
+                    </div>
                     <div class="form-group">
                         <label>Date of Birth</label>
                         <input type="date" id="dob" name="dob" required>
@@ -147,7 +158,7 @@
           <option>Energy & Community Solutions</option>
         </select>
                     </div>
-                    <div id="form-status" style="display: none; text-align: center; margin-top: 20px;">
+                    <!-- <div id="form-status" style="display: none; text-align: center; margin-top: 20px;">
                         <div id="loading-spinner" class="spinner-border text-primary" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
@@ -155,7 +166,7 @@
                             <i class="bi bi-check-circle-fill" style="color: green; font-size: 2rem;"></i>
                             <p style="color: green;">Submitted!</p>
                         </div>
-                    </div>
+                    </div> -->
                     <button type="submit" class="submit-btn">Submit Registration</button>
                 </form>
             </div>
@@ -168,8 +179,10 @@
                 </p>
 
                 <div class="partners-logos">
-                    <img src="Images/partner (2).png" alt="Partner 1 Logo" class="partner-logo">
-                    <img src="Images/partner (1).png" alt="Partner 2 Logo" class="partner-logo">
+                    <img src="Images/partner (1).png" alt="Partner 1 Logo" class="partner-logo">
+                    <img src="Images/partner (3).png" alt="Partner 2 Logo" class="partner-logo">
+                    <img src="Images/partner (2).png" alt="Partner 3 Logo" class="partner-logo">
+                    <img src="Images/partner (4).png" alt="Partner 4 Logo" class="partner-logo">
                     <!-- Add more logos below as needed -->
                     <!-- <img src="images/partner3.png" alt="Partner 3 Logo" class="partner-logo"> -->
                 </div>
@@ -195,11 +208,11 @@
 
                 <!-- Navigation Links -->
                 <div class="footer-links">
-                    <a href="#about">About</a>
+                    <a href="index.html#about">About</a>
 
                     <a href="register.html">Register</a>
 
-                    <a href="#contact">Contact</a>
+                    <a href="tel:+234 810 304 8606">Call Us</a>
                 </div>
 
 
@@ -225,11 +238,77 @@
 
 
         <!-- jquery plugin -->
+        <!-- jQuery CDN -->
+
+        <!-- Terms & Conditions Overlay -->
+        <div id="terms-overlay">
+            <div class="overlay-content">
+                <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 20px;">Terms & Conditions and Data Privacy Policy</h2>
+                <div class="terms-scroll-box" style="max-height: 60vh; overflow-y: auto; padding-right: 15px; text-align: left;">
+                    <p style="color: #555; font-size: 1rem; line-height: 1.5;">Before proceeding with your registration, please carefully read and accept our Terms and Conditions and Data Privacy Policy. In compliance with Nigerian data protection laws (including the Nigeria Data Protection Act 2023), we are
+                        committed to protecting your personal information.</p>
+                    <br>
+                    <p style="color: #555; font-size: 1rem; line-height: 1.5;">By submitting this form, you acknowledge and agree that:</p>
+                    <ol style="color: #555; font-size: 1rem; line-height: 1.5; margin-left: 20px;">
+                        <li>
+                            <strong>Collection and Use:</strong> The personal data you provide (including your name, contact details, demographic information, and uploaded documents) will be collected and used solely for the purpose of processing your
+                            registration, facilitating your participation in the FMYD CIRCULAR ECO program, communicating important updates, and for internal record-keeping and reporting.
+                        </li>
+                        <li>
+                            <strong>Third-Party Sharing:</strong> To effectively deliver the program and for operational purposes, your data may be shared with trusted third-party service providers and partners (e.g., for identity verification, program
+                            administration, or training delivery). These parties are obligated to protect your data in accordance with our privacy standards and applicable Nigerian laws.
+                        </li>
+                        <li>
+                            <strong>Data Security:</strong> We implement appropriate technical and organizational measures to ensure the security of your personal data against unauthorized or unlawful processing and against accidental loss, destruction,
+                            or damage.
+                        </li>
+                        <li>
+                            <strong>Consent:</strong> Your acceptance signifies your informed consent to the collection, processing, and sharing of your data as described above. If you do not accept these terms, your registration cannot be processed.
+                        </li>
+                    </ol>
+                    <p style="color: #555; font-size: 1rem; line-height: 1.5; margin-top: 20px;">Do you accept these conditions?</p>
+                </div>
+                <div class="terms-buttons" style="margin-top: 30px;">
+                    <button id="terms-accept-btn" class="btn btn-success" style="margin-right: 15px; font-size: 1.1rem; padding: 10px 25px;">Accept & Continue</button>
+                    <button id="terms-decline-btn" class="btn btn-danger" style="font-size: 1.1rem; padding: 10px 25px;">Decline</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- New Full-Page Submission Overlay -->
+        <div id="submission-overlay">
+            <div class="overlay-content">
+                <!-- Loading Spinner -->
+                <div id="overlay-loading-spinner" class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+
+                <!-- Success Message (initially hidden) -->
+                <div id="overlay-success-message">
+                    <i class="bi bi-check-circle-fill" style="color: green; font-size: 3.5rem;"></i>
+                    <p style="color: green; font-size: 1.6rem; margin-top: 15px; font-weight: 600;">Registration Submitted Successfully!</p>
+                    <button id="overlay-close-btn" class="btn btn-success mt-4">Close</button>
+                </div>
+
+
+                <!-- Error Message (initially hidden) -->
+                <div id="overlay-error-message">
+                    <i class="bi bi-x-circle-fill" style="color: red; font-size: 3.5rem;"></i>
+                    <!-- Added an ID to the paragraph that will hold the dynamic error message -->
+                    <p id="overlay-error-text" style="color: red; font-size: 1.6rem; margin-top: 15px; font-weight: 600;">Submission Failed. Please try again.</p>
+                    <button id="overlay-error-close-btn" class="btn btn-danger mt-4">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your existing scripts -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
         <script type="module" src="js/script.js"></script>
 
         <script src="https://kit.fontawesome.com/d408e8dabc.js" crossorigin="anonymous"></script>
-        <script src="js/jquery-3.7.1.js"></script>
+        <!-- <script src="js/jquery-3.7.1.js"></script> -->
         <!-- <script src="js/bootstrap.min.js"></script> -->
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

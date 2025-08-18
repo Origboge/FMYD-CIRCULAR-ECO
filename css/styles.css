@@ -141,6 +141,8 @@
                         text-decoration: none;
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                         transition: all 0.3s ease;
+                        margin-bottom: 30px;
+                        margin-top: 25px;
                     }
                     
                     .register-btn:hover {
@@ -374,6 +376,7 @@
                         font-size: clamp( 1.5rem, 5vw, 3rem);
                         text-transform: uppercase;
                         margin-bottom: 20px;
+                        margin-top: 10px;
                     }
                     
                     .intro-text2 {
@@ -436,6 +439,56 @@
                         margin-bottom: 20px;
                         display: flex;
                         flex-direction: column;
+                    }
+                    /* In your css/styles.css */
+                    /* Target all select elements or just the ones in your dropdown-group */
+                    
+                    .form-group select {
+                        -webkit-appearance: none;
+                        /* For Chrome, Safari, iOS browsers */
+                        -moz-appearance: none;
+                        /* For Firefox */
+                        appearance: none;
+                        /* Standard property */
+                        background-color: #ffffff;
+                        /* Ensure a white background or chosen background */
+                        border: 1px solid #d3ceda;
+                        /* Bootstrap's default border for forms */
+                        border-radius: .25rem;
+                        /* Bootstrap's default border-radius */
+                        padding: .375rem 2.25rem .375rem .75rem;
+                        /* Standard Bootstrap padding for selects */
+                        font-size: 1rem;
+                        line-height: 1.5;
+                        color: #495057;
+                        /* A neutral dark grey for text, like Bootstrap's default */
+                        /* Add an arrow yourself, as appearance:none removes the native one */
+                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+                        background-repeat: no-repeat;
+                        background-position: right .75rem center;
+                        background-size: 16px 12px;
+                    }
+                    /* Style the placeholder option specifically (though results can be inconsistent) */
+                    
+                    .form-group select option[value=""] {
+                        color: #6c757d;
+                        /* A lighter grey for placeholders */
+                        /* Many properties on <option> are ignored by browsers, but color might work */
+                    }
+                    /* When an actual option is selected, make its color darker */
+                    
+                    .form-group select:not([value=""]) {
+                        color: #212529;
+                        /* Darker text for selected actual value */
+                    }
+                    /* For focus state to maintain consistency */
+                    
+                    .form-group select:focus {
+                        border-color: hsl(138, 84%, 29%);
+                        /* Example Bootstrap focus border */
+                        outline: 0;
+                        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+                        /* Example Bootstrap focus shadow */
                     }
                     
                     .name-group {
@@ -592,10 +645,115 @@
                         font-size: 14px;
                         color: #aaa;
                     }
+                    /* Terms & Conditions Overlay */
                     
-                    .spinner-border {
-                        width: 2rem;
-                        height: 2rem;
+                    #terms-overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.7);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 1001;
+                        /* Higher than submission overlay */
+                        display: none;
+                        /* Hidden by default */
+                    }
+                    
+                    #terms-overlay .overlay-content {
+                        background-color: #fff;
+                        padding: 30px;
+                        border-radius: 10px;
+                        text-align: center;
+                        max-width: 800px;
+                        width: 90%;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                    }
+                    /* Optional: Add some basic styling for scrollbar in terms-scroll-box */
+                    
+                    .terms-scroll-box::-webkit-scrollbar {
+                        width: 8px;
+                    }
+                    
+                    .terms-scroll-box::-webkit-scrollbar-track {
+                        background: #f1f1f1;
+                        border-radius: 4px;
+                    }
+                    
+                    .terms-scroll-box::-webkit-scrollbar-thumb {
+                        background: #888;
+                        border-radius: 4px;
+                    }
+                    
+                    .terms-scroll-box::-webkit-scrollbar-thumb:hover {
+                        background: #555;
+                    }
+                    /* Full-page overlay for submission status */
+                    
+                    #submission-overlay {
+                        position: fixed;
+                        /* Fixed position relative to viewport */
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.7);
+                        /* Semi-transparent black background */
+                        display: flex;
+                        /* Use flexbox for centering content */
+                        justify-content: center;
+                        /* Center horizontally */
+                        align-items: center;
+                        /* Center vertically */
+                        z-index: 1000;
+                        /* Ensure it's on top of everything (higher than any other element) */
+                        visibility: hidden;
+                        /* Hidden by default */
+                        opacity: 0;
+                        /* Fully transparent by default */
+                        transition: visibility 0s 0.3s, opacity 0.3s ease-in-out;
+                        /* Smooth fade-in/out */
+                        backdrop-filter: blur(5px);
+                        /* Optional: Adds a blur effect to content behind */
+                    }
+                    /* Class to show the overlay */
+                    
+                    #submission-overlay.show {
+                        visibility: visible;
+                        opacity: 1;
+                        transition-delay: 0s;
+                        /* Remove transition delay when showing */
+                    }
+                    
+                    .overlay-content {
+                        background-color: #fff;
+                        padding: 40px 50px;
+                        border-radius: 12px;
+                        text-align: center;
+                        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+                        max-width: 90%;
+                        /* Responsive width */
+                        min-width: 300px;
+                        /* Minimum width */
+                        transform: scale(0.8);
+                        /* Slightly scale down by default */
+                        transition: transform 0.3s ease-out;
+                        /* Smooth scale animation */
+                    }
+                    /* Scale up the content when the overlay is shown */
+                    
+                    #submission-overlay.show .overlay-content {
+                        transform: scale(1);
+                    }
+                    /* Initially hide all overlay messages/spinners within the overlay */
+                    
+                    #overlay-loading-spinner,
+                    #overlay-success-message,
+                    #overlay-error-message {
+                        display: none;
                     }
                     
                     .partners-section {
