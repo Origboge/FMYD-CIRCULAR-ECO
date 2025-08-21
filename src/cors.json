@@ -3,8 +3,10 @@
         "http://localhost:3000",
         "http://127.0.0.1:5500",
         "https://origboge.github.io",
-        "https://fmyd-circular-eco-registration.web.app/"
+        "https://fmyd-circular-eco-registration.web.app",
+        "https://wastetowealthfmyd.com.ng"
     ],
     "method": ["GET", "POST", "PUT", "OPTIONS"],
+    "responseHeader": ["Content-Type", "Authorization"],
     "maxAgeSeconds": 3600
 }]

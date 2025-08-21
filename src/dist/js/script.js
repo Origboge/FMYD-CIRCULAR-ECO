@@ -50,10 +50,16 @@ const stataLGAs = {
 // =======================================================
 // === 3. ALL DOM-RELATED CODE GOES INSIDE DOMContentLoaded ===
 // =======================================================
+/* ---------------------------------------------------------
+   0) Keep your existing stataLGAs object here (unchanged)
+--------------------------------------------------------- */
+
+// =======================================================
+// DOM READY
+// =======================================================
 document.addEventListener("DOMContentLoaded", () => {
-    // Populate state dropdown
+    // Populate State/LGA
     const stateSelect = document.getElementById("state");
-    // Ensure state dropdown exists before appending to it, addressing potential null issues
     if (stateSelect) {
         Object.keys(stataLGAs).forEach(s => {
             const opt = document.createElement("option");
@@ -65,10 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("State dropdown element not found!");
     }
 
-
-    // When state selected -> populate LGA list
     const lgaSelect = document.getElementById("lga");
-
     if (stateSelect && lgaSelect) {
         stateSelect.addEventListener("change", () => {
             lgaSelect.innerHTML = '<option value="">Select LGA</option>';
@@ -84,65 +87,72 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("State or LGA dropdown element not found!");
     }
 
-
-    // Firebase config
+    // =======================================================
+    // Firebase config (FIXED storageBucket)
+    // =======================================================
     const firebaseConfig = {
         apiKey: "AIzaSyDpERMUEG6z7JsFuz-0K_106v5pZamLSVk",
         authDomain: "fmyd-circular-eco-registration.firebaseapp.com",
         projectId: "fmyd-circular-eco-registration",
-        storageBucket: "fmyd-circular-eco-registration.firebasestorage.app",
+        storageBucket: "fmyd-circular-eco-registration.firebasestorage.app", // ✅ correct bucket
         messagingSenderId: "75870394524",
         appId: "1:75870394524:web:98ec8481ac5f5820a87559",
         measurementId: "G-0NNZQMP7TB"
     };
 
-    // Init Firebase using the namespaced syntax
-    const app = firebase.initializeApp(firebaseConfig);
+
+    // Init Firebase (Compat)
+    firebase.initializeApp(firebaseConfig);
     const storage = firebase.storage();
     const db = firebase.firestore();
     const auth = firebase.auth();
+
+    // =======================================================
+    // App Check (do NOT include manual reCAPTCHA script tag)
+    // =======================================================
     const appCheck = firebase.appCheck();
 
+    // For local dev ONLY, you can uncomment the next line once to debug App Check:
+    // self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 
-    // Initialize App Check (using your actual siteKey)
+
+    // Use your actual reCAPTCHA v3 site key from App Check
     appCheck.activate("6LdnMKYrAAAAABFmUxHLpIv9VagA73xNakZmWp_i", true);
     firebase.appCheck().setTokenAutoRefreshEnabled(true);
 
-    // Sign in anonymously - Ensure this runs if needed for Firestore rules
-    auth.signInAnonymously()
-        .then(() => console.log("Signed in anonymously for App Check or Firestore rules."))
-        .catch((error) => {
-            console.error("Anonymous sign-in failed:", error);
-            // Handle error, e.g., show a message to the user
-        });
+    // Ensure signed in (anonymous)
+    async function ensureSignedIn() {
+        let user = auth.currentUser;
+        if (!user) {
+            await auth.signInAnonymously();
+            user = auth.currentUser;
+        }
+        return user;
+    }
 
-
-    // File inputs and error messages
+    // =======================================================
+    // File inputs & previews (unchanged logic, with size checks)
+    // =======================================================
     const passportInput = document.getElementById("passport");
     const passportError = document.getElementById("passport-error");
-
     const ninInput = document.getElementById("nin");
     const ninError = document.getElementById("nin-error");
 
-
-    // Passport file preview & size check
     if (passportInput && passportError) {
         passportInput.addEventListener("change", () => {
             const file = passportInput.files[0];
             const box = document.getElementById("passport-box");
-
             const existingImg = box ? box.querySelector("img") : null;
             if (existingImg) existingImg.remove();
 
             if (file) {
-                if (file.size > 100 * 1024) { // 100 KB
+                if (file.size > 100 * 1024) {
                     passportError.style.display = "block";
                     passportInput.value = "";
                     return;
                 } else {
                     passportError.style.display = "none";
                 }
-
                 if (box) {
                     const img = document.createElement("img");
                     img.src = URL.createObjectURL(file);
@@ -152,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     img.style.position = "absolute";
                     img.style.top = "0";
                     img.style.left = "0";
-                    img.style.zIndex = "1"; // behind the + sign
+                    img.style.zIndex = "1";
                     box.appendChild(img);
 
                     const plus = box.querySelector(".plus-sign");
@@ -162,34 +172,26 @@ document.addEventListener("DOMContentLoaded", () => {
                         plus.style.right = "5px";
                         plus.style.zIndex = "10";
                     }
-                } else {
-                    console.error("Passport box element not found!");
                 }
             }
         });
-    } else {
-        console.error("Passport input or error display element not found!");
     }
 
-
-    // NIN file preview & size check
     if (ninInput && ninError) {
         ninInput.addEventListener("change", () => {
             const file = ninInput.files[0];
             const box = document.getElementById("nin-box");
-
             const existingImg = box ? box.querySelector("img") : null;
             if (existingImg) existingImg.remove();
 
             if (file) {
-                if (file.size > 100 * 1024) { // 100 KB
+                if (file.size > 100 * 1024) {
                     ninError.style.display = "block";
                     ninInput.value = "";
                     return;
                 } else {
                     ninError.style.display = "none";
                 }
-
                 if (box) {
                     const img = document.createElement("img");
                     img.src = URL.createObjectURL(file);
@@ -199,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     img.style.position = "absolute";
                     img.style.top = "0";
                     img.style.left = "0";
-                    img.style.zIndex = "1"; // behind the + sign
+                    img.style.zIndex = "1";
                     box.appendChild(img);
 
                     const plus = box.querySelector(".plus-sign");
@@ -209,285 +211,249 @@ document.addEventListener("DOMContentLoaded", () => {
                         plus.style.right = "5px";
                         plus.style.zIndex = "10";
                     }
-                } else {
-                    console.error("NIN box element not found!");
                 }
             }
         });
-    } else {
-        console.error("NIN input or error display element not found!");
     }
 
-
-    // Auto-calculate age from DOB
-    const dobInput = document.getElementById("dob");
-    const ageDisplay = document.getElementById("age-display");
-
-    if (dobInput && ageDisplay) {
-        dobInput.addEventListener("change", () => {
-            const dobValue = dobInput.value;
-            if (dobValue) {
-                const today = new Date();
-                const birthDate = new Date(dobValue);
-                let age = today.getFullYear() - birthDate.getFullYear();
-                const monthDiff = today.getMonth() - birthDate.getMonth();
-                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-                    age--;
-                }
-                ageDisplay.textContent = `Age: ${age}`;
-            } else {
-                ageDisplay.textContent = "";
-            }
-        });
-    } else {
-        console.error("Date of Birth input or Age Display element not found!");
-    }
-
-
-    // Live capitalization and character filtering for name fields with live error messages
-    const nameInputElements = [
-        { input: document.getElementById("first_name"), errorSpan: document.getElementById("first-name-error-live") },
-        { input: document.getElementById("middle_name"), errorSpan: document.getElementById("middle-name-error-live") },
-        { input: document.getElementById("last_name"), errorSpan: document.getElementById("last-name-error-live") }
-    ];
-
-    nameInputElements.forEach(({ input, errorSpan }) => {
-        if (input && errorSpan) {
-            let errorTimeout; // To manage the display time of the error message for this specific input
-
+    // =======================================================
+    // Live name/phone filtering (unchanged)
+    // =======================================================
+    [
+        { id: "first_name", err: "first-name-error-live" },
+        { id: "middle_name", err: "middle-name-error-live" },
+        { id: "last_name", err: "last-name-error-live" }
+    ].forEach(({ id, err }) => {
+        const input = document.getElementById(id);
+        const errEl = document.getElementById(err);
+        if (input && errEl) {
             input.addEventListener("input", function() {
-                const originalValue = this.value;
-                // 1. Remove any characters that are NOT letters or spaces
-                let filteredValue = originalValue.replace(/[^A-Za-z\s]/g, '');
-                // 2. Convert to uppercase
-                this.value = filteredValue.toUpperCase();
+                let value = this.value;
 
-                // Show error message if characters were removed
-                if (originalValue.length !== filteredValue.length) {
-                    errorSpan.style.display = "block";
-                    // Clear any existing timeout to restart the timer
-                    clearTimeout(errorTimeout);
-                    // Hide the error after 3 seconds
-                    errorTimeout = setTimeout(() => {
-                        errorSpan.style.display = "none";
-                    }, 3000);
+                // 1) Remove non-letters/spaces
+                const filtered = value.replace(/[^A-Za-z\s]/g, "");
+
+                // 2) Force everything to uppercase
+                const upper = filtered.toUpperCase();
+
+                // 3) Update input
+                this.value = upper;
+
+                // 4) Show error if something was stripped
+                if (value !== filtered) {
+                    errEl.style.display = "block";
+                    clearTimeout(this._t);
+                    this._t = setTimeout(() => (errEl.style.display = "none"), 3000);
                 } else {
-                    errorSpan.style.display = "none"; // Hide if input is clean
-                    clearTimeout(errorTimeout); // Ensure timeout is cleared if user corrects quickly
+                    errEl.style.display = "none";
                 }
             });
-        } else {
-            console.error(`Name input or live error span not found for: ${input ? input.id : 'unknown'}`);
         }
     });
 
-    // Live filtering for phone number input
+
     const phoneInput = document.getElementById("phone");
-    const phoneErrorLive = document.getElementById("phone-error-live"); // Get the new error span
-
+    const phoneErrorLive = document.getElementById("phone-error-live");
     if (phoneInput && phoneErrorLive) {
-        let errorTimeout; // To manage the display time of the error message
-
         phoneInput.addEventListener("input", function() {
-            const originalValue = this.value;
-            // Allowed characters: digits, plus sign, spaces, hyphens
-            let filteredValue = originalValue.replace(/[^0-9+\s\-]/g, '');
-
-            // Ensure '+' is only at the beginning and only one '+'
-            if (filteredValue.startsWith('+')) {
-                filteredValue = '+' + filteredValue.substring(1).replace(/\+/g, ''); // Remove internal '+'
+            const original = this.value;
+            let filtered = original.replace(/[^0-9+\s\-]/g, "");
+            if (filtered.startsWith("+")) {
+                filtered = "+" + filtered.substring(1).replace(/\+/g, "");
             } else {
-                filteredValue = filteredValue.replace(/\+/g, ''); // Remove all '+' if not at start
+                filtered = filtered.replace(/\+/g, "");
             }
-
-            // Update the input field
-            this.value = filteredValue;
-
-            // Show error message if characters were removed
-            if (originalValue.length !== filteredValue.length || (originalValue.match(/\+/g) || []).length > 1) {
+            this.value = filtered;
+            if (original !== filtered || (original.match(/\+/g) || []).length > 1) {
                 phoneErrorLive.style.display = "block";
-                // Clear any existing timeout to restart the timer
-                clearTimeout(errorTimeout);
-                // Hide the error after 3 seconds
-                errorTimeout = setTimeout(() => {
-                    phoneErrorLive.style.display = "none";
-                }, 3000);
+                clearTimeout(this._t2);
+                this._t2 = setTimeout(() => (phoneErrorLive.style.display = "none"), 3000);
             } else {
-                phoneErrorLive.style.display = "none"; // Hide if input is clean
-                clearTimeout(errorTimeout); // Ensure timeout is cleared if user corrects quickly
+                phoneErrorLive.style.display = "none";
             }
         });
-    } else {
-        console.error("Phone input or live error display element not found!");
+    }
+
+    // Auto age
+    const dobInput = document.getElementById("dob");
+    const ageDisplay = document.getElementById("age-display");
+    const dobErrorLive = document.getElementById("dob-error-live"); // flashing error
+    const dobHelper = document.getElementById("dob-helper"); // stable helper
+
+    if (dobInput && ageDisplay) {
+        dobInput.addEventListener("change", () => {
+            const v = dobInput.value;
+            if (!v) {
+                ageDisplay.textContent = "";
+                if (dobErrorLive) dobErrorLive.style.display = "none";
+                return;
+            }
+
+            const today = new Date();
+            const birth = new Date(v);
+            let age = today.getFullYear() - birth.getFullYear();
+            const m = today.getMonth() - birth.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+
+            // If under 18 → reset input, clear age, show error
+            if (age < 18) {
+                dobInput.value = ""; // clear DOB
+                ageDisplay.textContent = ""; // clear displayed age
+                if (dobErrorLive) {
+                    dobErrorLive.style.display = "block";
+                    clearTimeout(dobInput._tAge);
+                    dobInput._tAge = setTimeout(() => (dobErrorLive.style.display = "none"), 3000);
+                }
+                return; // stop here
+            }
+
+            // Valid age (>=18)
+            ageDisplay.textContent = `Age: ${age}`;
+            if (dobErrorLive) dobErrorLive.style.display = "none";
+        });
     }
 
 
-    // Form submission logic
+
+    // =======================================================
+    // Overlays + Terms
+    // =======================================================
     const form = document.getElementById("registration-form");
 
-    // Get references to main submission overlay elements
-    const submissionOverlay = document.getElementById("submission-overlay");
-    const overlayLoadingSpinner = document.getElementById("overlay-loading-spinner");
-    const overlaySuccessMessage = document.getElementById("overlay-success-message");
-    const overlayErrorMessage = document.getElementById("overlay-error-message");
-    const overlayErrorText = document.getElementById("overlay-error-text");
-    const overlayCloseBtn = document.getElementById("overlay-close-btn");
-    const overlayErrorCloseBtn = document.getElementById("overlay-error-close-btn");
-
-    // Get references to Terms & Conditions overlay elements
     const termsOverlay = document.getElementById("terms-overlay");
     const termsAcceptBtn = document.getElementById("terms-accept-btn");
     const termsDeclineBtn = document.getElementById("terms-decline-btn");
 
+    const successOverlay = document.getElementById("successOverlay");
+    const spinner = document.getElementById("spinner");
+    const checkmark = document.getElementById("checkmark");
+    const overlayText = document.getElementById("overlayText");
+    const errorOverlay = document.getElementById("errorOverlay");
 
-    // Function to hide all main submission overlay content and the overlay itself
-    function hideOverlayContent() {
-        if (overlayLoadingSpinner) overlayLoadingSpinner.style.display = "none";
-        if (overlaySuccessMessage) overlaySuccessMessage.style.display = "none";
-        if (overlayErrorMessage) overlayErrorMessage.style.display = "none";
+    function showSuccessSpinner() {
+        if (!successOverlay) return;
+        successOverlay.style.display = "flex";
+        if (spinner) spinner.style.display = "block";
+        if (checkmark) checkmark.style.display = "none";
+        if (overlayText) overlayText.style.display = "none";
     }
 
-    // New function to show the submission overlay and loading state
-    function showSubmissionOverlay() {
-        if (submissionOverlay) {
-            submissionOverlay.style.display = "flex";
-            hideOverlayContent();
-            if (overlayLoadingSpinner) overlayLoadingSpinner.style.display = "block";
+    function showSuccessDone() {
+        if (!successOverlay) return;
+        if (spinner) spinner.style.display = "none";
+        if (checkmark) checkmark.style.display = "block";
+        if (overlayText) overlayText.style.display = "block";
+    }
+
+    function hideSuccessOverlay() {
+        if (successOverlay) successOverlay.style.display = "none";
+    }
+
+    function showErrorOverlay() {
+        if (errorOverlay) {
+            errorOverlay.style.display = "flex";
+            setTimeout(() => (errorOverlay.style.display = "none"), 5000);
         }
     }
 
-    // Function to hide Terms & Conditions overlay
-    function hideTermsOverlay() {
-        if (termsOverlay) {
-            termsOverlay.style.display = "none";
-        }
+    function showTerms() {
+        if (termsOverlay) termsOverlay.style.display = "flex";
     }
 
-    // Attach close button listeners for main submission overlay
-    if (overlayCloseBtn) {
-        overlayCloseBtn.addEventListener("click", () => {
-            submissionOverlay.style.display = "none";
-        });
-    }
-    if (overlayErrorCloseBtn) {
-        overlayErrorCloseBtn.addEventListener("click", () => {
-            submissionOverlay.style.display = "none";
-        });
+    function hideTerms() {
+        if (termsOverlay) termsOverlay.style.display = "none";
     }
 
-    // Attach listener for Terms & Conditions Decline button
     if (termsDeclineBtn) {
         termsDeclineBtn.addEventListener("click", () => {
-            hideTermsOverlay();
+            hideTerms();
             console.log("Terms declined. Submission cancelled.");
-            if (submissionOverlay) submissionOverlay.style.display = "none";
         });
     }
 
-    // NEW: Function to handle the actual form submission process to Firebase
+    // =======================================================
+    // The real submission flow (FIXED ORDER)
+    // =======================================================
     async function processFormSubmission() {
         try {
-            const successOverlay = document.getElementById("successOverlay");
-            const spinner = document.getElementById("spinner");
-            const checkmark = document.getElementById("checkmark");
-            const overlayText = document.getElementById("overlayText");
+            hideTerms(); // 1) close terms
+            showSuccessSpinner(); // 2) show spinner
 
-            // Show overlay + spinner immediately
-            successOverlay.classList.add("show");
-            spinner.style.display = "block";
-            checkmark.style.display = "none";
-            overlayText.style.display = "none";
-
-            // ✅ Your Firebase upload + Firestore save code here...
-
-            // When success → swap spinner with checkmark + text
-            setTimeout(() => {
-                spinner.style.display = "none";
-                checkmark.style.display = "block";
-                overlayText.style.display = "block";
-            }, 2500);
-
-            // Keep full overlay for longer (7s)
-            setTimeout(() => {
-                successOverlay.classList.remove("show");
-            }, 5000);
-
-            form.reset();
-
-        } catch (error) {
-            console.error("Submission failed:", error);
-
-            const errorOverlay = document.getElementById("errorOverlay");
-            errorOverlay.classList.add("show");
-            setTimeout(() => errorOverlay.classList.remove("show"), 5000);
-        }
-        hideTermsOverlay(); // Hide terms overlay as we proceed
-        showSubmissionOverlay(); // Show the main overlay with the spinner
-
-        // Get uploaded files
-        const passportFile = form["passport"].files[0];
-        const ninFile = form["nin"].files[0];
-
-        // Ensure files are selected before proceeding with upload
-        if (!passportFile || !ninFile) {
-            hideOverlayContent();
-            if (overlayErrorMessage) {
-                overlayErrorMessage.style.display = "block";
-                if (overlayErrorText) overlayErrorText.textContent = "Please select both Passport and NIN files.";
+            // 3) Validate required files
+            const passportFile = form["passport"].files[0];
+            const ninFile = form["nin"].files[0];
+            if (!passportFile || !ninFile) {
+                hideSuccessOverlay();
+                showErrorOverlay();
+                console.error("Please select both Passport and NIN files.");
+                return;
             }
-            return;
-        }
 
-        // Client-side regex validation for names and phone (final check before Storage/Firestore operations)
-        const nameRegex = /^[A-Za-z\s]+$/;
-        const phoneRegex = /^\+?[0-9\s\-]+$/;
+            // 4) Client-side regex validations (names + phone)
+            const nameRegex = /^[A-Za-z\s]+$/;
+            const phoneRegex = /^\+?[0-9\s\-]+$/;
 
-        if (!nameRegex.test(form["first_name"].value.trim()) ||
-            !nameRegex.test(form["middle_name"].value.trim()) ||
-            !nameRegex.test(form["last_name"].value.trim())) {
-            hideOverlayContent();
-            if (overlayErrorMessage) {
-                overlayErrorMessage.style.display = "block";
-                if (overlayErrorText) overlayErrorText.textContent = "Invalid name format. Only letters and spaces are allowed for names.";
+            if (!nameRegex.test(form["first_name"].value.trim()) ||
+                !nameRegex.test(form["middle_name"].value.trim()) ||
+                !nameRegex.test(form["last_name"].value.trim())) {
+                hideSuccessOverlay();
+                showErrorOverlay();
+                console.error("Invalid name format.");
+                return;
             }
-            return;
-        }
 
-        if (!phoneRegex.test(form["phone"].value.trim())) {
-            hideOverlayContent();
-            if (overlayErrorMessage) {
-                overlayErrorMessage.style.display = "block";
-                if (overlayErrorText) overlayErrorText.textContent = "Invalid phone number format. Only numbers, '+', spaces, and hyphens allowed.";
+            if (!phoneRegex.test(form["phone"].value.trim())) {
+                hideSuccessOverlay();
+                showErrorOverlay();
+                console.error("Invalid phone number format.");
+                return;
             }
-            return;
-        }
+            // 5) Ensure auth
+            const user = await ensureSignedIn();
+            if (!user) {
+                hideSuccessOverlay();
+                showErrorOverlay();
+                throw new Error("Auth failed - no user.");
+            }
 
-        // Get the current signed-in user
-        const user = auth.currentUser;
+            // 6) Ensure App Check is working BEFORE upload
+            try {
+                const appCheckTokenResult = await firebase.appCheck().getToken();
+                console.log("✅ App Check token acquired:", appCheckTokenResult.token);
+            } catch (err) {
+                hideSuccessOverlay();
+                showErrorOverlay();
+                console.error("❌ Failed to get App Check token:", err);
+                throw new Error("App Check failed - stopping upload.");
+            }
 
-        try {
-            // Upload files to Firebase Storage under each user's UID
+
+            // 7) Upload to Storage (under user uid)
             const passportRef = storage.ref(`passport/${user.uid}/${Date.now()}_${passportFile.name}`);
             const ninRef = storage.ref(`nin/${user.uid}/${Date.now()}_${ninFile.name}`);
 
-            const passportSnapshot = await passportRef.put(passportFile);
-            const ninSnapshot = await ninRef.put(ninFile);
+            const [passportSnapshot, ninSnapshot] = await Promise.all([
+                passportRef.put(passportFile),
+                ninRef.put(ninFile)
+            ]);
 
-            const passportURL = await passportSnapshot.ref.getDownloadURL();
-            const ninURL = await ninSnapshot.ref.getDownloadURL();
+            const [passportURL, ninURL] = await Promise.all([
+                passportSnapshot.ref.getDownloadURL(),
+                ninSnapshot.ref.getDownloadURL()
+            ]);
 
-            // Calculate age from DOB
+            console.log("✅ Upload success. Passport:", passportURL, " NIN:", ninURL);
+
+            // 7) Prepare and write Firestore
             const dobValue = form["dob"].value;
-            let age = "";
+            let computedAge = "";
             if (dobValue) {
                 const today = new Date();
                 const birthDate = new Date(dobValue);
                 let tempAge = today.getFullYear() - birthDate.getFullYear();
                 const monthDiff = today.getMonth() - birthDate.getMonth();
-                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-                    tempAge--;
-                }
-                age = tempAge;
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) tempAge--;
+                computedAge = tempAge;
             }
 
             const formData = {
@@ -497,63 +463,48 @@ document.addEventListener("DOMContentLoaded", () => {
                 phone: form["phone"].value.trim(),
                 email: form["email"].value.trim(),
                 dob: dobValue,
-                age: age,
+                age: computedAge,
                 state: form["state"].value,
                 lga: form["lga"].value,
                 address: form["address"].value.trim(),
+                landmark: form["landmark"] ? form["landmark"].value.trim() : "",
                 areaOfTraining: form["training_area"].value,
                 sex: form["sex"].value,
-                passportURL: passportURL,
-                ninURL: ninURL,
+                passportURL,
+                ninURL,
                 timestamp: new Date()
             };
 
             await db.collection("registrations").add(formData);
 
-            // Handle Success in Overlay
-            hideOverlayContent();
-            if (overlaySuccessMessage) overlaySuccessMessage.style.display = "block";
-            form.reset(); // Clear the form on successful submission
-        } catch (error) {
-            console.error("Error writing to Firestore or uploading files:", error);
-            // Handle Error in Overlay
-            hideOverlayContent();
-            if (overlayErrorMessage) {
-                overlayErrorMessage.style.display = "block";
-                // Display specific Firebase error message if available, otherwise a generic one
-                if (overlayErrorText) overlayErrorText.textContent = "Submission failed: " + (error.message || "An unexpected error occurred.");
-            }
+            // 8) Success UI
+            showSuccessDone();
+            setTimeout(() => {
+                hideSuccessOverlay();
+            }, 4000);
+
+            form.reset();
+        } catch (err) {
+            console.error("Submission failed:", err);
+            hideSuccessOverlay();
+            showErrorOverlay();
         }
     }
 
-    // Attach listener for Terms & Conditions Accept button
+    // Accept → submit
     if (termsAcceptBtn) {
         termsAcceptBtn.addEventListener("click", processFormSubmission);
     }
 
-    // Modify the main form submission listener to first show T&C modal
+    // Form submit → open terms first
     if (form) {
         form.addEventListener("submit", (e) => {
-            e.preventDefault(); // Prevent immediate form submission
-
-            // Perform HTML5 form validation checks first
+            e.preventDefault();
             if (!form.checkValidity()) {
-                // If form is not valid according to HTML5 constraints (e.g., 'required' fields),
-                // trigger the browser's native validation UI
                 form.reportValidity();
-                return; // Stop here if validation fails
+                return;
             }
-
-            // If form passes HTML5 validation, show the Terms & Conditions overlay
-            if (termsOverlay) {
-                termsOverlay.style.display = "flex"; // Show the overlay
-            } else {
-                console.error("Terms & Conditions overlay element not found!");
-                // Fallback: If for some reason the overlay isn't found, proceed directly
-                processFormSubmission();
-            }
+            showTerms();
         });
-    } else {
-        console.error("Registration form element not found!");
     }
 });
