@@ -1,172 +1,254 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FMYD</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css?v=1.0" rel="stylesheet"> -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CIRCULAR ECONOMY YOUTH EMPOWEREMENT INITIATIVE</title>
 
+    <!-- Bootstrap CSS (needed for navbar + grid + components) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <!-- Your Custom Styles -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="css/custom-bootstrap.css" />
 
-  <script type="module" crossorigin src="/FMYD-CIRCULAR-ECO/assets/script-BK2LSUwg.js"></script>
-  <link rel="stylesheet" crossorigin href="/FMYD-CIRCULAR-ECO/assets/script-DhGK-cP3.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- AOS Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+    <!-- Favicons: WebP first + JPEG fallback -->
+    <link rel="icon" type="image/webp" href="/images-optimized/logo.webp">
+    <link rel="alternate icon" type="image/jpeg" href="/images-optimized/logo.jpg">
+  <script type="module" crossorigin src="/assets/index-B5Qt9EMX.js"></script>
 </head>
 
+
 <body>
-
-    <!-- Loading overlay -->
-    <!-- <div class="loading-overlay" id="loading-overlay"> -->
-    <!-- PNG logo used as spinner -->
-    <!-- <img src="images/logo.jpg" alt="Loading..." class="spinner-logo">
-    </div> -->
     <div class="page-content">
-
+        <!-- HEADER -->
         <header>
-
-            <!-- As a link -->
-            <nav class="navbar navbar-expand-md navbar-expand-sm ">
+            <nav class="navbar navbar-expand-md navbar-expand-sm">
                 <div class="container-fluid custom-padding">
-                    <a class="navbar-brand" href="index.html">
-                        <img class="logo" src="/FMYD-CIRCULAR-ECO/assets/logo-CKRVIHM0.jpg" alt="Logo"> </a>
-
+                    <a class="navbar-brand" href="/">
+                        <picture>
+                            <source srcset="/images-optimized/logo.webp" type="image/webp">
+                            <img class="logo" src="/images-optimized/logo.jpg" alt="Logo">
+                        </picture>
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-                    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="index.html">
-                                    <span class="bi bi-house"></span> Home
-                                </a>
-                                <!-- <a class="nav-link  " href="home.html">Home</a> -->
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="#about"> About Us</a>
-
-                            </li>
-
-
                             <li class="nav-item">
-                                <a class="nav-link" href="register.html"> <span class="bi bi-file-earmark-text"></span>Register Now</a>
+                                <a class="nav-link" href="/">
+                                    <!-- Home SVG -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 .5l6 6V15a1 1 0 0 1-1 1h-3v-5H6v5H3a1 1 0 0 1-1-1V6.5l6-6z" />
+                                    </svg> Home
+                                </a>
                             </li>
-
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register.html">
+                                    <!-- File Icon SVG -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6l-4-4H4z" />
+                                    </svg> Register Now
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
+
+        <!-- Intro Section -->
         <section class="intro-section">
             <div class="container">
-                <h1 class="intro-heading">CIRCULAR ECONOMY YOUTH EMPOWEREMENT INITIATIVE FOR CLIMATE ACTION.</h1>
-                <p class="intro-text">
-                    Waste to wealth, waste to energy...
-                </p>
-
-                <a href="register.html" class="btn btn-success btn-lg register-btn" data-aos="fade-up" data-aos-delay="300"> REGISTER NOW</a>
-                <h2 class="intro-heading2">CREATING JOBS, TRANSFORMING WASTE INTO ECO-FRIENDLY ITEMS AND VALUABLE RESOURCES.</h2>
+                <h1 class="intro-heading">
+                    CIRCULAR ECONOMY YOUTH EMPOWEREMENT INITIATIVE FOR CLIMATE ACTION.
+                </h1>
+                <p class="intro-text">Waste to wealth, waste to energy...</p>
+                <a href="/register.html" class="btn btn-success btn-lg register-btn" data-aos="fade-up" data-aos-delay="300">
+          REGISTER NOW
+        </a>
+                <h2 class="intro-heading2">
+                    CREATING JOBS, TRANSFORMING WASTE INTO ECO-FRIENDLY ITEMS AND VALUABLE RESOURCES.
+                </h2>
             </div>
         </section>
 
-
+        <!-- Features Section -->
         <section class="features-section">
-
-
             <div class="features-wrapper">
-
                 <div class="container features-container">
                     <div class="section-header">
-                        <h2 class="training-title-sign" data-aos="fade-down" data-aos-duration="1000">Areas of Training
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(5)-DrEFsCeP.png" class="sticker sticker1" alt="">
+                        <h2 class="training-title-sign" data-aos="fade-down" data-aos-duration="1000">
+                            Areas of Training
+                            <picture>
+                                <source srcset="/images-optimized/stickers-5.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-5.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
                         </h2>
                     </div>
-                    <div class="feature-column left">
-                        <div class="feature-box" data-aos="zoom-in">Plastic Recycling
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(1)-C_2JxJeP.png" class="sticker sticker1" alt="">
-                        </div>
-                        <div class="feature-box" data-aos="zoom-in">Wind Turbines
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(2)-Yb-oABVU.png" class="sticker sticker1" alt="">
-                        </div>
-                        <div class="feature-box" data-aos="zoom-in">Glass Recycling
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(3)-B8RTiAkj.png" class="sticker sticker1" alt="">
-                        </div>
-                        <div class="feature-box" data-aos="zoom-in">E-Waste Recycling
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(4)-CzVUpJFg.png" class="sticker sticker1" alt="">
-                        </div>
-                        <div class="feature-box" data-aos="zoom-in">Waste Valorization to Animal Feeds & Fertilizers
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(5)-DrEFsCeP.png" class="sticker sticker1" alt=""></div>
 
-                        <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(7)-BcMwfU6a.png" class="sticker sticker1" alt=""></div>
+                    <div class="feature-column left">
+                        <div class="feature-box" data-aos="zoom-in">
+                            Plastic Recycling
+                            <picture>
+                                <source srcset="/images-optimized/stickers-1.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-1.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            Wind Turbines
+                            <picture>
+                                <source srcset="/images-optimized/stickers-2.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-2.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            Glass Recycling
+                            <picture>
+                                <source srcset="/images-optimized/stickers-3.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-3.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            E-Waste Recycling
+                            <picture>
+                                <source srcset="/images-optimized/stickers-4.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-4.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            Waste Valorization to Animal Feeds & Fertilizers
+                            <picture>
+                                <source srcset="/images-optimized/stickers-5.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-5.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                    </div>
+
                     <div class="feature-column right">
-                        <div class="feature-box" data-aos="zoom-in">Textiles Recycling
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(6)-DnSCfJSj.png" class="sticker sticker1" alt=""></div>
-                        <div class="feature-box" data-aos="zoom-in">Waste Exportation
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(7)-BcMwfU6a.png" class="sticker sticker1" alt=""></div>
-                        <div class="feature-box" data-aos="zoom-in">Metal Recycling
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(8)-MuVQ3I5p.png" class="sticker sticker1" alt=""></div>
-                        <div class="feature-box" data-aos="zoom-in">Scrabs Recycling
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(5)-DrEFsCeP.png" class="sticker sticker1" alt=""></div>
-                        <div class="feature-box" data-aos="zoom-in">Energy & Community Renewable Solutions
-                            <img src="/FMYD-CIRCULAR-ECO/assets/stickers%20(10)-D5ThTmV8.png" class="sticker sticker1" alt=""></div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            Textiles Recycling
+                            <picture>
+                                <source srcset="/images-optimized/stickers-6.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-6.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            Waste Exportation
+                            <picture>
+                                <source srcset="/images-optimized/stickers-7.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-7.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            Metal Recycling
+                            <picture>
+                                <source srcset="/images-optimized/stickers-8.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-8.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            Scrabs Recycling
+                            <picture>
+                                <source srcset="/images-optimized/stickers-5.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-5.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
+                        <div class="feature-box" data-aos="zoom-in">
+                            Energy & Community Renewable Solutions
+                            <picture>
+                                <source srcset="/images-optimized/stickers-10.webp" type="image/webp" />
+                                <img src="/images-optimized/stickers-10.png" class="sticker sticker1" alt="" loading="lazy" />
+                            </picture>
+                        </div>
                     </div>
                 </div>
+
                 <div style="display: flex; justify-content: center;">
-                    <a href="register.html" class="btn btn-success btn-lg register-btn" data-aos="fade-up" data-aos-delay="300"> REGISTER NOW</a>
+                    <a href="/register.html" class="btn btn-success btn-lg register-btn" data-aos="fade-up" data-aos-delay="300">
+            REGISTER NOW
+          </a>
                 </div>
             </div>
         </section>
+
+        <!-- About Section -->
+        <!-- (Kept same, added loading="lazy" to images) -->
         <section class="about-us" id="about">
             <div class="container">
                 <h2 class="about-heading">ABOUT THE PROJECT.</h2>
-
-                <p class="intro-text2 p1">The <span class="highlight">Waste to Wealth </span> intiative is a groundbreaking project designed specifically to create wealth / job opportunities for youths by transforming waste into valuable resources & eco-friendly items, promoting
-                    a circular economy and sustainable waste management practices across the 36 states of Nigeria and FCT.</p>
-                <p class="intro-text2 p2"> Implemented by the <span class="highlight"> Ministry of Youth Development</span> on the mandate of President <span class="highlight">Bola Ahmed Tinubu</span>, this initiative will empower young Nigerians to become job creators, develop
-                    waste-to-wealth businesses, contributing to achieving the <span class="highlight">Sustainable Development Goals</span>(SDGs), mitigating climate change effect, reducing environmental pollution and fostering economic growth.</p>
-                <div class="image-wrapper"> <img src="/FMYD-CIRCULAR-ECO/assets/sdg%20releve-TDRJOo5K.jpg" alt="SDG" class="about-inline-image">
+                <p class="intro-text2 p1">
+                    The <span class="highlight">Waste to Wealth</span> initiative is a groundbreaking project designed specifically to create wealth / job opportunities for youths by transforming waste into valuable resources & eco-friendly items, promoting
+                    a circular economy and sustainable waste management practices across the 36 states of Nigeria and FCT.
+                </p>
+                <p class="intro-text2 p2">
+                    Implemented by the <span class="highlight">Ministry of Youth Development</span> on the mandate of President
+                    <span class="highlight">Bola Ahmed Tinubu</span>, this initiative will empower young Nigerians to become job creators, develop waste-to-wealth businesses, contributing to achieving the <span class="highlight">Sustainable
+            Development Goals</span> (SDGs), mitigating climate change effect, reducing environmental pollution and fostering economic growth.
+                </p>
+                <div class="image-wrapper">
+                    <picture>
+                        <source srcset="/images-optimized/sdg-releve.webp" type="image/webp">
+                        <img src="/images-optimized/sdg-releve.jpg" alt="SDG" class="about-inline-image" loading="lazy">
+                    </picture>
                 </div>
+
                 <p class="intro-text2 p3" style="text-align: center; font-weight: bold; font-size: 1.2rem; margin-top: 20px;">
                     CIRCULAR ECONOMY YOUTH EMPOWERMENT INITIATIVE
-
                 </p>
-                <p class="intro-text2 p3" style="text-align: center;"> Creating wealth & raising a generation of environmental stewards.</p>
-
-
+                <p class="intro-text2 p3" style="text-align: center;"> Creating wealth & raising a generation of environmental stewards.
+                </p>
                 <div class="register-wrapper">
-                    <a href="register.html" class="register-btn">REGISTER NOW</a>
+                    <a href="/register.html" class="register-btn">REGISTER NOW</a>
                 </div>
 
-                <div class="image-wrapper"> <img src="/FMYD-CIRCULAR-ECO/assets/purpose-Dkr4acyb.jpg" alt="SDG" class="about-inline-image">
+                <div class="image-wrapper">
+                    <picture>
+                        <source srcset="/images-optimized/purpose.webp" type="image/webp">
+                        <img src="/images-optimized/purpose.jpg" alt="Purpose" class="about-inline-image" loading="lazy">
+                    </picture>
                 </div>
-
-
             </div>
-
         </section>
 
 
+        <!-- Leaders, Partners, Footer sections -->
         <section class="leaders-section">
             <div class="leaders-wrapper">
                 <h2 class="section-title" data-aos="fade-down">Voice of the Leaders</h2>
                 <div class="leaders-grid">
                     <div class="leader-card" data-aos="zoom-in">
-                        <img src="/FMYD-CIRCULAR-ECO/assets/bola-Fyt_haw4.jpg" alt="President">
+                        <picture>
+                            <source srcset="/images-optimized/bola.webp" type="image/webp">
+                            <img src="/images-optimized/bola.jpg" alt="President" loading="lazy">
+                        </picture>
                         <div class="leader-info">
                             <h3>BOLA AHMED TINUBU GCFR</h3>
                             <p class="position">President Commander-in-Chief Of The Armed Forces Federal Republic Of Nigeria </p>
-                            <p class="quote">"Through a Youth-powered circular economy, we are building a prosperous Nigeria for all."</p>
+                            <p class="quote">"Through a Youth-powered circular economy, we are building a prosperous Nigeria for all."
+                            </p>
                         </div>
                     </div>
 
                     <div class="leader-card" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="/FMYD-CIRCULAR-ECO/assets/ayodele-D-5uNj7Y.jpg" alt="Minister for Youth">
+                        <picture>
+                            <source srcset="/images-optimized/ayodele.webp" type="image/webp">
+                            <img src="/images-optimized/ayodele.jpg" alt="Minister for Youth" loading="lazy">
+                        </picture>
                         <div class="leader-info">
                             <h3>COMR. AYODELE OLAWANDE</h3>
                             <p class="position">Minister Of Youth Development</p>
@@ -175,7 +257,10 @@
                     </div>
 
                     <div class="leader-card" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="/FMYD-CIRCULAR-ECO/assets/ps-C0vylhrW.jpg" alt="Permanent Secretary">
+                        <picture>
+                            <source srcset="/images-optimized/ps.webp" type="image/webp">
+                            <img src="/images-optimized/ps.jpg" alt="Permanent Secretary" loading="lazy">
+                        </picture>
                         <div class="leader-info">
                             <h3>MR OLUBUNMI OLUSANYA</h3>
                             <p class="position">Permanent Secretary</p>
@@ -185,58 +270,94 @@
                 </div>
             </div>
         </section>
+
         <section class="partners-section">
             <div class="container">
                 <h2 class="section-title">Our Partners</h2>
                 <p class="section-subtitle">
                     Our mission is to support, empower, and protect Nigerian youth. We invite organizations that share our vision to join us in creating a brighter future for the next generation.
                 </p>
-
                 <div class="partners-logos">
-                    <img src="/FMYD-CIRCULAR-ECO/assets/partner%20(1)-Dzp9Fu_N.png" alt="Partner 1 Logo" class="partner-logo">
-                    <img src="/FMYD-CIRCULAR-ECO/assets/partner%20(3)-CuEVJynk.png" alt="Partner 2 Logo" class="partner-logo">
-                    <img src="/FMYD-CIRCULAR-ECO/assets/partner%20(2)-dzXK0Vg2.png" alt="Partner 3 Logo" class="partner-logo">
-                    <img src="/FMYD-CIRCULAR-ECO/assets/partner%20(4)-_9_9eDLt.png" alt="Partner 4 Logo" class="partner-logo">
-                    <!-- Add more logos below as needed -->
-                    <!-- <img src="images/partner3.png" alt="Partner 3 Logo" class="partner-logo"> -->
+                    <picture>
+                        <source srcset="/images-optimized/partner-1.webp" type="image/webp">
+                        <img src="/images-optimized/partner-2.png" alt="Partner 1 Logo" class="partner-logo" loading="lazy">
+                    </picture>
+                    <picture>
+                        <source srcset="/images-optimized/partner-3.webp" type="image/webp">
+                        <img src="/images-optimized/partner-3" alt="Partner 2 Logo" class="partner-logo" loading="lazy">
+                    </picture>
+                    <picture>
+                        <source srcset="/images-optimized/partner-2.webp" type="image/webp">
+                        <img src="/images-optimized/partner-2.png" alt="Partner 3 Logo" class="partner-logo" loading="lazy">
+                    </picture>
+                    <picture>
+                        <source srcset="/images-optimized/partner-4.webp" type="image/webp">
+                        <img src="/images-optimized/partner-4.png" alt="Partner 4 Logo" class="partner-logo" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </section>
+        <!-- Footer -->
         <footer class="site-footer">
             <div class="footer-container">
-
-                <!-- Logo -->
                 <div class="footer-top">
                     <div class="footer-logo">
-                        <img src="/FMYD-CIRCULAR-ECO/assets/logo-CKRVIHM0.jpg" alt="FMYD Circular Eco Logo">
+                        <picture>
+                            <source srcset="/images-optimized/logo.webp" type="image/webp">
+                            <img src="/images-optimized/logo.jpg" alt="FMYD Circular Eco Logo">
+                        </picture>
                     </div>
-
-                    <!-- Contact Info -->
                     <div class="footer-contact">
-                        <p><i class="fas fa-map-marker-alt"></i> 2nd floor, Block D Federal Secretariat Complex, Bullet Building, Garki, Abuja. Nigeria</p>
-                        <p><i class="fas fa-envelope"></i> Info@fmyd.gov</p>
-                        <p><i class="fas fa-phone" id="contact"></i> +234 810 304 8606</p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                            </svg> 2nd floor, Block D Federal Secretariat Complex, Bullet Building, Garki, Abuja. Nigeria
+                        </p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v.217l-8 4.8-8-4.8V4zm0 1.383v6.634L5.803 8.5 0 5.383zM6.761 9.7L0 13.25A2 2 0 0 0 2 14h12a2 2 0 0 0 2-.75l-6.761-3.55L8 10.5l-1.239-.8z" />
+                            </svg> info@youthdev.gov.ng
+                        </p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.654 1.328a.678.678 0 0 1 .746-.082l2.453 1.23a.678.678 0 0 1 .291.892L6.383 5.1a.678.678 0 0 0 .145.761l2.457 2.457a.678.678 0 0 0 .761.145l1.732-.761a.678.678 0 0 1 .892.291l1.23 2.453a.678.678 0 0 1-.082.746l-1.528 1.528c-.272.272-.667.376-1.024.26A12.19 12.19 0 0 1 3.925 3.352c-.116-.357-.012-.752.26-1.024L5.713.8z" />
+                            </svg> +234 806 398 6391
+                        </p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.654 1.328a.678.678 0 0 1 .746-.082l2.453 1.23a.678.678 0 0 1 .291.892L6.383 5.1a.678.678 0 0 0 .145.761l2.457 2.457a.678.678 0 0 0 .761.145l1.732-.761a.678.678 0 0 1 .892.291l1.23 2.453a.678.678 0 0 1-.082.746l-1.528 1.528c-.272.272-.667.376-1.024.26A12.19 12.19 0 0 1 3.925 3.352c-.116-.357-.012-.752.26-1.024L5.713.8z" />
+                            </svg> +234 803 829 8666
+                        </p>
                     </div>
                 </div>
-
-                <!-- Navigation Links -->
                 <div class="footer-links">
                     <a href="#about">About</a>
-
-                    <a href="register.html">Register</a>
-
-                    <a href="tel:+234 810 304 8606">Call Us</a>
+                    <a href="/register.html">Register</a>
+                    <a href="tel:+2348063986391">Call Us</a>
                 </div>
-
-                <!-- Social Icons -->
                 <div class="footer-socials">
-                    <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <!-- Facebook -->
+                    <a href="#" class="facebook" title="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M8.94 6.5H7V5.14c0-.46.24-.9.99-.9h1V2.1h-1.7C6.07 2.1 5 3.07 5 4.9V6.5H3.5V8.9H5V16h2.5V8.9h1.73l.27-2.4z" />
+                        </svg>
+                    </a>
+                    <!-- Twitter -->
+                    <a href="https://x.com/fmydng?s=21&t=rqnN4NOLifHw5p_qEVlcKw" class="twitter" title="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M16 3.038a6.54 6.54 0 0 1-1.885.517 3.301 3.301 0 0 0 1.443-1.817 6.574 6.574 0 0 1-2.084.797A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.431A3.289 3.289 0 0 0 2.13 7.59 3.323 3.323 0 0 1 .64 7.1v.04a3.286 3.286 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115c-.212 0-.418-.021-.619-.06a3.285 3.285 0 0 0 3.067 2.28A6.588 6.588 0 0 1 0 13.026 9.29 9.29 0 0 0 5.032 14.5c6.038 0 9.341-5.003 9.341-9.334 0-.143-.003-.285-.01-.425A6.674 6.674 0 0 0 16 3.038z" />
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/fmyd_official?igsh=MWV3czI0NGtxOHNmYQ==" class="instagram" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C5.794 0 5.555.01 4.703.048c-.849.04-1.43.175-1.934.373a3.923 3.923 0 0 0-1.423.928A3.923 3.923 0 0 0 .418 2.772C.22 3.277.085 3.858.045 4.707.006 5.558 0 5.797 0 8.002c0 2.206.01 2.445.048 3.297.04.849.175 1.43.373 1.934.197.485.463.907.928 1.372.465.465.887.731 1.372.928.504.198 1.085.333 1.934.373.852.038 1.091.048 3.297.048s2.445-.01 3.297-.048c.849-.04 1.43-.175 1.934-.373a3.923 3.923 0 0 0 1.423-.928 3.923 3.923 0 0 0 .928-1.423c.198-.504.333-1.085.373-1.934.038-.852.048-1.091.048-3.297s-.01-2.445-.048-3.297c-.04-.849-.175-1.43-.373-1.934a3.923 3.923 0 0 0-.928-1.423A3.923 3.923 0 0 0 13.23.418c-.504-.198-1.085-.333-1.934-.373C10.445.006 10.206 0 8 0zm0 1.44c2.175 0 2.434.01 3.291.048.798.037 1.232.172 1.52.286.383.149.656.327.944.615.288.288.466.561.615.944.114.288.249.722.286 1.52.038.857.048 1.116.048 3.291s-.01 2.434-.048 3.291c-.037.798-.172 1.232-.286 1.52a2.48 2.48 0 0 1-.615.944 2.48 2.48 0 0 1-.944.615c-.288.114-.722.249-1.52.286-.857.038-1.116.048-3.291.048s-2.434-.01-3.291-.048c-.798-.037-1.232-.172-1.52-.286a2.48 2.48 0 0 1-.944-.615 2.48 2.48 0 0 1-.615-.944c-.114-.288-.249-.722-.286-1.52C1.45 10.436 1.44 10.177 1.44 8s.01-2.434.048-3.291c.037-.798.172-1.232.286-1.52.149-.383.327-.656.615-.944.288-.288.561-.466.944-.615.288-.114.722-.249 1.52-.286C5.566 1.45 5.825 1.44 8 1.44zm0 2.162a4.398 4.398 0 1 0 0 8.796 4.398 4.398 0 0 0 0-8.796zm0 7.255a2.857 2.857 0 1 1 0-5.714 2.857 2.857 0 0 1 0 5.714zm4.609-7.96a1.02 1.02 0 1 0 0-2.04 1.02 1.02 0 0 0 0 2.04z" />
+                        </svg>
+                    </a>
                 </div>
-
-                <!-- Bottom -->
                 <div class="footer-bottom">
                     <p>Designed & Built by Origboge</p>
                     <p>&copy; 2025 FMYD Circular Eco. All Rights Reserved.</p>
@@ -244,115 +365,96 @@
             </div>
         </footer>
 
+        <!-- (Kept same, added loading="lazy" to images) -->
 
-        <!-- jquery plugin -->
-        <!-- jQuery CDN -->
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/d408e8dabc.js" crossorigin="anonymous"></script>
+    </div>
 
-        <!-- <script src="js/bootstrap.min.js"></script> -->
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script type="module" src="/js/script.js" defer></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".page-content").classList.add("show");
 
-        <script>
-            AOS.init();
-        </script>
-        <script>
             AOS.init({
                 duration: 1000,
                 once: true,
-                easing: 'ease-in-out'
+                easing: "ease-in-out",
             });
-        </script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init({
-                once: false, // Animation triggers every time you scroll
-            });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-        <script>
-            // Animate feature boxes on scroll with slower ease
+
             gsap.utils.toArray(".feature-box").forEach((box) => {
                 ScrollTrigger.create({
                     trigger: box,
                     start: "top 80%",
                     onEnter: () => animateBox(box),
-                    onEnterBack: () => animateBox(box), // triggers again on scroll up
-                    toggleActions: "play none none none"
+                    onEnterBack: () => animateBox(box),
+                    toggleActions: "play none none none",
                 });
             });
 
             function animateBox(box) {
-                gsap.fromTo(box, {
-                    opacity: 0,
-                    y: 60,
-                    scale: 0.8
-                }, {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 1, // slow animation
-                    ease: "slow(0.7, 0.7, false)", // soft easing
-                });
+                gsap.fromTo(
+                    box, {
+                        opacity: 0,
+                        y: 60,
+                        scale: 0.8
+                    }, {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1,
+                        ease: "slow(0.7, 0.7, false)",
+                    }
+                );
             }
+
             gsap.from(".about-heading", {
                 scrollTrigger: {
                     trigger: ".p1",
                     start: "top 80%",
-                    toggleActions: "play none none reset" // key part
+                    toggleActions: "play none none reset",
                 },
                 x: 100,
                 opacity: 0,
-                duration: 0.5
+                duration: 0.5,
             });
             gsap.from(".p1", {
                 scrollTrigger: {
                     trigger: ".p1",
                     start: "top 80%",
-                    toggleActions: "play none none reset" // key part
+                    toggleActions: "play none none reset",
                 },
                 x: 100,
                 opacity: 0,
-                duration: 0.5
+                duration: 0.5,
             });
-
             gsap.from(".p2", {
                 scrollTrigger: {
                     trigger: ".p2",
                     start: "top 80%",
-                    toggleActions: "play none none reset"
+                    toggleActions: "play none none reset",
                 },
                 x: -100,
                 opacity: 0,
-                duration: 0.5
+                duration: 0.5,
             });
-
             gsap.from(".p3", {
                 scrollTrigger: {
                     trigger: ".p3",
                     start: "top 80%",
-                    toggleActions: "play none none reset"
+                    toggleActions: "play none none reset",
                 },
                 x: 100,
                 opacity: 0,
-                duration: 0.5
+                duration: 0.5,
             });
-        </script>
-        <script>
-            // Wait for the DOM to fully load
-            document.addEventListener("DOMContentLoaded", function() {
-                // Select the entire page content container
-                var pageContent = document.querySelector('.page-content');
-
-                // Add the "show" class to trigger the animation
-                pageContent.classList.add('show');
-            });
-        </script>
+        });
+    </script>
 </body>
-
-
 
 </html>

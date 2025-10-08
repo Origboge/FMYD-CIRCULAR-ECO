@@ -1,230 +1,283 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FMYD</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css?v=1.0" rel="stylesheet"> -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CIRCULAR ECONOMY YOUTH EMPOWEREMENT INITIATIVE</title>
 
+    <!-- Bootstrap CSS (needed for navbar + grid + components) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <!-- Your Custom Styles -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="css/custom-bootstrap.css" />
 
-  <script type="module" crossorigin src="/FMYD-CIRCULAR-ECO/assets/script-BK2LSUwg.js"></script>
-  <link rel="stylesheet" crossorigin href="/FMYD-CIRCULAR-ECO/assets/script-DhGK-cP3.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- AOS Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+    <!-- Favicons: WebP first + JPEG fallback -->
+    <link rel="icon" type="image/webp" href="/images-optimized/logo.webp">
+    <link rel="alternate icon" type="image/jpeg" href="/images-optimized/logo.jpg">
 </head>
 
 <body>
-    <!-- Loading overlay -->
-    <!-- <div class="loading-overlay" id="loading-overlay"> -->
-    <!-- PNG logo used as spinner -->
-    <!-- <img src="images/logo.jpg" alt="Loading..." class="spinner-logo">
-    </div> -->
     <div class="page-content">
-
+        <!-- HEADER -->
         <header>
-
-            <!-- As a link -->
-            <nav class="navbar navbar-expand-md navbar-expand-sm ">
+            <nav class="navbar navbar-expand-md navbar-expand-sm">
                 <div class="container-fluid custom-padding">
-                    <a class="navbar-brand" href="index.html">
-                        <img class="logo" src="/FMYD-CIRCULAR-ECO/assets/logo-CKRVIHM0.jpg" alt="Logo"> </a>
-
+                    <a class="navbar-brand" href="/">
+                        <picture>
+                            <source srcset="/images-optimized/logo.webp" type="image/webp">
+                            <img class="logo" src="/images-optimized/logo.jpg" alt="Logo">
+                        </picture>
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-                    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="index.html">
-                                    <span class="bi bi-house"></span> Home
-                                </a>
-                                <!-- <a class="nav-link  " href="home.html">Home</a> -->
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="index.html#about"> About Us</a>
-
-                            </li>
-
-
                             <li class="nav-item">
-                                <a class="nav-link" href="register.html"> <span class="bi bi-file-earmark-text"></span>Register Now</a>
+                                <a class="nav-link" href="/">
+                                    <!-- Home SVG -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 .5l6 6V15a1 1 0 0 1-1 1h-3v-5H6v5H3a1 1 0 0 1-1-1V6.5l6-6z" />
+                                    </svg> Home
+                                </a>
                             </li>
-
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#about">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register.html">
+                                    <!-- File Icon SVG -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6l-4-4H4z" />
+                                    </svg> Register Now
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
+
         <section class="register-section" id="register">
             <div class="register-container">
                 <h2 class="section-title">Register for Circular Economy Training</h2>
-                <form id="registration-form">
-                    <h4 class="mt-4" style="color: hsl(138, 84%, 29%);">Personal Information</h4>
-                    <hr>
-                    <!-- <div class="form-group name-group">
-                        <input type="text" name="first_name" placeholder="First Name" required>
-                        <input type="text" name="middle_name" placeholder="Middle Name">
-                        <input type="text" name="last_name" placeholder="Last Name" required>
-                    </div> -->
+
+                <form id="registration-form" novalidate>
+                    <h4 class="mt-4" style="color:hsl(138, 84%, 29%);">Personal Information</h4>
+                    <hr />
+
                     <div class="form-group name-group">
-                        <input type="text" id="first_name" name="first_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="First Name" required>
-                        <span id="first-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
+                        <input type="text" id="first_name" name="first_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="First Name" required />
+                        <span id="first-name-error-live" style="color:red;font-size:.85em;display:none;">Only letters and spaces allowed.</span>
 
-                        <input type="text" id="middle_name" name="middle_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="Middle Name" required>
-                        <span id="middle-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
+                        <input type="text" id="middle_name" name="middle_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="Middle Name" required />
+                        <span id="middle-name-error-live" style="color:red;font-size:.85em;display:none;">Only letters and spaces allowed.</span>
 
-                        <input type="text" id="last_name" name="last_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="Last Name" required>
-                        <span id="last-name-error-live" style="color: red; font-size: 0.85em; display: none;">Only letters and spaces allowed.</span>
+                        <input type="text" id="last_name" name="last_name" pattern="^[A-Za-z\s]+$" title="Only letters and spaces are allowed." placeholder="Last Name" required />
+                        <span id="last-name-error-live" style="color:red;font-size:.85em;display:none;">Only letters and spaces allowed.</span>
                     </div>
 
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        <input type="email" id="email" name="email" placeholder="Email Address" required />
                     </div>
 
                     <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" pattern="^\+?[0-9\s\-]+$" title="Only numbers, '+', spaces, and hyphens are allowed (e.g., +234 801-234-5678)." required>
-                        <span id="phone-error-live" style="color: red; font-size: 0.85em; display: none;">Only numbers, '+', spaces, and hyphens allowed.</span>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" pattern="^\+?[0-9\s\-]+$" title="Only numbers, '+', spaces, and hyphens are allowed (e.g., +234 801-234-5678)." required />
+                        <span id="phone-error-live" style="color:red;font-size:.85em;display:none;">Only numbers, '+', spaces, and hyphens allowed.</span>
                     </div>
+
                     <div class="form-group">
                         <label>Date of Birth</label>
-                        <input type="date" id="dob" name="dob" required>
-                        <span id="age-display" style="margin-left: 10px; font-weight: bold; color: hsl(138, 84%, 29%)"></span>
+                        <input type="date" id="dob" name="dob" required />
+                        <small id="dob-helper" style="color:#555;">
+  You must be 18 and above to register.
+</small>
+                        <br>
+                        <small id="dob-error-live" style="display:none;color:#d00;font-weight:bold;">
+  ❌ Age below 18 is not allowed.
+</small>
+
+                        <span id="age-display" style="margin-left:10px;font-weight:bold;color:hsl(138,84%,29%)"></span>
                     </div>
 
                     <div class="form-group">
                         <label>Sex</label>
                         <select name="sex" required>
-        <option value="">Select Sex</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
+              <option value="">Select Sex</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
                     </div>
 
-                    <div class="form-group upload-group">
-                        <label>Upload Passport Photo (Max 100 KB)</label>
-                        <div class="upload-box" id="passport-box">
-                            <span class="plus-sign">+</span>
-                            <input type="file" name="passport" id="passport" accept="image/*" required>
-                        </div>
-                        <small class="error-msg" id="passport-error" style="color: red; display: none;">File too large! Max 100 KB.</small>
-                    </div>
+                    <h4 class="mt-4" style="color:hsl(138, 84%, 29%);">Address</h4>
+                    <hr />
 
-                    <div class="form-group upload-group">
-                        <label>Upload NIN (Max 100 KB)</label>
-                        <div class="upload-box" id="nin-box">
-                            <span class="plus-sign">+</span>
-                            <input type="file" name="nin" id="nin" accept="image/*" required>
-                        </div>
-                        <small class="error-msg" id="nin-error" style="color: red; display: none;">File too large! Max 100 KB.</small>
-                    </div>
-
-                    <h4 class="mt-4" style="color: hsl(138, 84%, 29%);">Location Information</h4>
-                    <hr>
-                    <div class="form-group dropdown-group">
+                    <div class="form-group">
                         <select id="state" name="state" required>
-          <option value="">Select State of Residence</option>
-        </select>
+              <option value="">Select State Of Residence</option>
+            </select>
+                    </div>
+
+                    <div class="form-group">
                         <select id="lga" name="lga" required>
-          <option value="">Select LGA of Residence</option>
-        </select>
+              <option value="">Select LGA</option>
+            </select>
                     </div>
 
                     <div class="form-group">
                         <textarea name="address" placeholder="Permanent Home Address" required></textarea>
                     </div>
+
                     <div class="form-group">
                         <textarea name="landmark" placeholder="Nearest Landmark" required></textarea>
                     </div>
-                    <h4 class="mt-4" style="color: hsl(138, 84%, 29%);">Additional Information</h4>
-                    <hr>
+
+                    <h4 class="mt-4" style="color:hsl(138,84%,29%);">Documents</h4>
+                    <hr />
+
+                    <div class="form-group upload-group">
+                        <label>Upload Passport Photo (Max 50 KB)</label>
+                        <div class="upload-box" id="passport-box">
+                            <span class="plus-sign">+</span>
+                            <input type="file" name="passport" id="passport" accept="image/*" required />
+                        </div>
+                        <small class="error-msg" id="passport-error" style="color:red;display:none;">File too large! Max 50 KB.</small>
+                    </div>
+
+                    <div class="form-group upload-group">
+                        <label>Upload NIN Slip (Max 50 KB)</label>
+                        <div class="upload-box" id="nin-box">
+                            <span class="plus-sign">+</span>
+                            <input type="file" name="nin" id="nin" accept="image/*,application/pdf" required />
+                        </div>
+                        <small class="error-msg" id="nin-error" style="color:red;display:none;">File too large! Max 50 KB.</small>
+                    </div>
+
+                    <h4 class="mt-4" style="color:hsl(138, 84%, 29%);">Additional Information</h4>
+                    <hr />
 
                     <div class="form-group">
                         <select name="training_area" required>
-          <option value="">Select Area of Training</option>
-          <option>Plastic Recycling</option>
-          <option>Wind Turbines</option>
-          <option>Glass Recycling</option>
-          <option>E‑Waste Recycling</option>
-          <option>Waste to Feeds & Fertilizers</option>
-          <option>Textile Recycling</option>
-          <option>Waste Exportation</option>
-          <option>Metal Recycling</option>
-          <option>Scrap Recycling</option>
-          <option>Energy & Community Solutions</option>
-        </select>
+              <option value="">Select Area of Training</option>
+              <option>Plastic Recycling</option>
+              <option>Wind Turbines</option>
+              <option>Glass Recycling</option>
+              <option>E-Waste Recycling</option>
+              <option>Waste to Feeds &amp; Fertilizers</option>
+              <option>Textile Recycling</option>
+              <option>Waste Exportation</option>
+              <option>Metal Recycling</option>
+              <option>Scrap Recycling</option>
+              <option>Energy &amp; Community Solutions</option>
+            </select>
                     </div>
-                    <!-- <div id="form-status" style="display: none; text-align: center; margin-top: 20px;">
-                        <div id="loading-spinner" class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        <div id="success-check" style="display: none;">
-                            <i class="bi bi-check-circle-fill" style="color: green; font-size: 2rem;"></i>
-                            <p style="color: green;">Submitted!</p>
-                        </div>
-                    </div> -->
+
                     <button type="submit" class="submit-btn">Submit Registration</button>
                 </form>
             </div>
         </section>
+
+        <!-- Partners / Footer (unchanged content okay) -->
         <section class="partners-section">
             <div class="container">
                 <h2 class="section-title">Our Partners</h2>
                 <p class="section-subtitle">
                     Our mission is to support, empower, and protect Nigerian youth. We invite organizations that share our vision to join us in creating a brighter future for the next generation.
                 </p>
-
                 <div class="partners-logos">
-                    <img src="/FMYD-CIRCULAR-ECO/assets/partner%20(1)-Dzp9Fu_N.png" alt="Partner 1 Logo" class="partner-logo">
-                    <img src="/FMYD-CIRCULAR-ECO/assets/partner%20(3)-CuEVJynk.png" alt="Partner 2 Logo" class="partner-logo">
-                    <img src="/FMYD-CIRCULAR-ECO/assets/partner%20(2)-dzXK0Vg2.png" alt="Partner 3 Logo" class="partner-logo">
-                    <img src="/FMYD-CIRCULAR-ECO/assets/partner%20(4)-_9_9eDLt.png" alt="Partner 4 Logo" class="partner-logo">
-                    <!-- Add more logos below as needed -->
-                    <!-- <img src="images/partner3.png" alt="Partner 3 Logo" class="partner-logo"> -->
+                    <picture>
+                        <source srcset="/images-optimized/partner-1.webp" type="image/webp">
+                        <img src="/images-optimized/partner-2.png" alt="Partner 1 Logo" class="partner-logo" loading="lazy">
+                    </picture>
+                    <picture>
+                        <source srcset="/images-optimized/partner-3.webp" type="image/webp">
+                        <img src="/images-optimized/partner-3" alt="Partner 2 Logo" class="partner-logo" loading="lazy">
+                    </picture>
+                    <picture>
+                        <source srcset="/images-optimized/partner-2.webp" type="image/webp">
+                        <img src="/images-optimized/partner-2.png" alt="Partner 3 Logo" class="partner-logo" loading="lazy">
+                    </picture>
+                    <picture>
+                        <source srcset="/images-optimized/partner-4.webp" type="image/webp">
+                        <img src="/images-optimized/partner-4.png" alt="Partner 4 Logo" class="partner-logo" loading="lazy">
+                    </picture>
                 </div>
+
             </div>
         </section>
-
+        <!-- Footer -->
         <footer class="site-footer">
             <div class="footer-container">
-
-                <!-- Logo -->
                 <div class="footer-top">
                     <div class="footer-logo">
-                        <img src="/FMYD-CIRCULAR-ECO/assets/logo-CKRVIHM0.jpg" alt="FMYD Circular Eco Logo">
+                        <picture>
+                            <source srcset="/images-optimized/logo.webp" type="image/webp">
+                            <img src="/images-optimized/logo.jpg" alt="FMYD Circular Eco Logo">
+                        </picture>
                     </div>
-
-                    <!-- Contact Info -->
                     <div class="footer-contact">
-                        <p><i class="fas fa-map-marker-alt"></i> 2nd floor, Block D Federal Secretariat Complex, Bullet Building, Garki, Abuja. Nigeria</p>
-                        <p><i class="fas fa-envelope"></i> Info@fmyd.gov</p>
-                        <p><i class="fas fa-phone" id="contact"></i> +234 810 304 8606</p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                            </svg> 2nd floor, Block D Federal Secretariat Complex, Bullet Building, Garki, Abuja. Nigeria
+                        </p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v.217l-8 4.8-8-4.8V4zm0 1.383v6.634L5.803 8.5 0 5.383zM6.761 9.7L0 13.25A2 2 0 0 0 2 14h12a2 2 0 0 0 2-.75l-6.761-3.55L8 10.5l-1.239-.8z" />
+                            </svg> info@youthdev.gov.ng
+                        </p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.654 1.328a.678.678 0 0 1 .746-.082l2.453 1.23a.678.678 0 0 1 .291.892L6.383 5.1a.678.678 0 0 0 .145.761l2.457 2.457a.678.678 0 0 0 .761.145l1.732-.761a.678.678 0 0 1 .892.291l1.23 2.453a.678.678 0 0 1-.082.746l-1.528 1.528c-.272.272-.667.376-1.024.26A12.19 12.19 0 0 1 3.925 3.352c-.116-.357-.012-.752.26-1.024L5.713.8z" />
+                            </svg> +234 806 398 6391
+                        </p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.654 1.328a.678.678 0 0 1 .746-.082l2.453 1.23a.678.678 0 0 1 .291.892L6.383 5.1a.678.678 0 0 0 .145.761l2.457 2.457a.678.678 0 0 0 .761.145l1.732-.761a.678.678 0 0 1 .892.291l1.23 2.453a.678.678 0 0 1-.082.746l-1.528 1.528c-.272.272-.667.376-1.024.26A12.19 12.19 0 0 1 3.925 3.352c-.116-.357-.012-.752.26-1.024L5.713.8z" />
+                            </svg> +234 803 829 8666
+                        </p>
                     </div>
                 </div>
-
-                <!-- Navigation Links -->
                 <div class="footer-links">
                     <a href="index.html#about">About</a>
-
-                    <a href="register.html">Register</a>
-
-                    <a href="tel:+234 810 304 8606">Call Us</a>
+                    <a href="/register.html">Register</a>
+                    <a href="tel:+2348063986391">Call Us</a>
                 </div>
-
-
-                <!-- Social Icons -->
                 <div class="footer-socials">
-                    <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+                    <!-- Facebook -->
+                    <a href="#" class="facebook" title="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M8.94 6.5H7V5.14c0-.46.24-.9.99-.9h1V2.1h-1.7C6.07 2.1 5 3.07 5 4.9V6.5H3.5V8.9H5V16h2.5V8.9h1.73l.27-2.4z" />
+                        </svg>
+                    </a>
+                    <!-- Twitter -->
+                    <a href="https://x.com/fmydng?s=21&t=rqnN4NOLifHw5p_qEVlcKw" class="twitter" title="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M16 3.038a6.54 6.54 0 0 1-1.885.517 3.301 3.301 0 0 0 1.443-1.817 6.574 6.574 0 0 1-2.084.797A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.431A3.289 3.289 0 0 0 2.13 7.59 3.323 3.323 0 0 1 .64 7.1v.04a3.286 3.286 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115c-.212 0-.418-.021-.619-.06a3.285 3.285 0 0 0 3.067 2.28A6.588 6.588 0 0 1 0 13.026 9.29 9.29 0 0 0 5.032 14.5c6.038 0 9.341-5.003 9.341-9.334 0-.143-.003-.285-.01-.425A6.674 6.674 0 0 0 16 3.038z" />
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/fmyd_official?igsh=MWV3czI0NGtxOHNmYQ==" class="instagram" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C5.794 0 5.555.01 4.703.048c-.849.04-1.43.175-1.934.373a3.923 3.923 0 0 0-1.423.928A3.923 3.923 0 0 0 .418 2.772C.22 3.277.085 3.858.045 4.707.006 5.558 0 5.797 0 8.002c0 2.206.01 2.445.048 3.297.04.849.175 1.43.373 1.934.197.485.463.907.928 1.372.465.465.887.731 1.372.928.504.198 1.085.333 1.934.373.852.038 1.091.048 3.297.048s2.445-.01 3.297-.048c.849-.04 1.43-.175 1.934-.373a3.923 3.923 0 0 0 1.423-.928 3.923 3.923 0 0 0 .928-1.423c.198-.504.333-1.085.373-1.934.038-.852.048-1.091.048-3.297s-.01-2.445-.048-3.297c-.04-.849-.175-1.43-.373-1.934a3.923 3.923 0 0 0-.928-1.423A3.923 3.923 0 0 0 13.23.418c-.504-.198-1.085-.333-1.934-.373C10.445.006 10.206 0 8 0zm0 1.44c2.175 0 2.434.01 3.291.048.798.037 1.232.172 1.52.286.383.149.656.327.944.615.288.288.466.561.615.944.114.288.249.722.286 1.52.038.857.048 1.116.048 3.291s-.01 2.434-.048 3.291c-.037.798-.172 1.232-.286 1.52a2.48 2.48 0 0 1-.615.944 2.48 2.48 0 0 1-.944.615c-.288.114-.722.249-1.52.286-.857.038-1.116.048-3.291.048s-2.434-.01-3.291-.048c-.798-.037-1.232-.172-1.52-.286a2.48 2.48 0 0 1-.944-.615 2.48 2.48 0 0 1-.615-.944c-.114-.288-.249-.722-.286-1.52C1.45 10.436 1.44 10.177 1.44 8s.01-2.434.048-3.291c.037-.798.172-1.232.286-1.52.149-.383.327-.656.615-.944.288-.288.561-.466.944-.615.288-.114.722-.249 1.52-.286C5.566 1.45 5.825 1.44 8 1.44zm0 2.162a4.398 4.398 0 1 0 0 8.796 4.398 4.398 0 0 0 0-8.796zm0 7.255a2.857 2.857 0 1 1 0-5.714 2.857 2.857 0 0 1 0 5.714zm4.609-7.96a1.02 1.02 0 1 0 0-2.04 1.02 1.02 0 0 0 0 2.04z" />
+                        </svg>
+                    </a>
 
-                <!-- Bottom -->
+                </div>
                 <div class="footer-bottom">
                     <p>Designed & Built by Origboge</p>
                     <p>&copy; 2025 FMYD Circular Eco. All Rights Reserved.</p>
@@ -232,15 +285,7 @@
             </div>
         </footer>
 
-
-        <!-- <section class="fade-image-section">
-            <img src="Images/sdg releve.jpg" alt="About footer" class="bottom-image" /></section> -->
-
-
-        <!-- jquery plugin -->
-        <!-- jQuery CDN -->
-
-        <!-- Terms & Conditions Overlay -->
+        <!-- Single Terms & Conditions overlay (only one, not duplicated) -->
         <div id="terms-overlay">
             <div class="overlay-content">
                 <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 20px;">Terms & Conditions and Data Privacy Policy</h2>
@@ -275,59 +320,49 @@
             </div>
         </div>
 
-
-        <!-- New Full-Page Submission Overlay -->
-        <div id="submission-overlay">
-            <div class="overlay-content">
-                <!-- Loading Spinner -->
-                <div id="overlay-loading-spinner" class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-
-                <!-- Success Message (initially hidden) -->
-                <div id="overlay-success-message">
-                    <i class="bi bi-check-circle-fill" style="color: green; font-size: 3.5rem;"></i>
-                    <p style="color: green; font-size: 1.6rem; margin-top: 15px; font-weight: 600;">Registration Submitted Successfully!</p>
-                    <button id="overlay-close-btn" class="btn btn-success mt-4">Close</button>
-                </div>
-
-
-                <!-- Error Message (initially hidden) -->
-                <div id="overlay-error-message">
-                    <i class="bi bi-x-circle-fill" style="color: red; font-size: 3.5rem;"></i>
-                    <!-- Added an ID to the paragraph that will hold the dynamic error message -->
-                    <p id="overlay-error-text" style="color: red; font-size: 1.6rem; margin-top: 15px; font-weight: 600;">Submission Failed. Please try again.</p>
-                    <button id="overlay-error-close-btn" class="btn btn-danger mt-4">Close</button>
-                </div>
+        <!-- Simple success overlay -->
+        <div id="successOverlay" class="overlay" style="display:none;">
+            <div class="overlay-box">
+                <div id="spinner" class="spinner"></div>
+                <div id="checkmark" class="checkmark" style="display:none;">✔</div>
+                <p id="overlayText" style="display:none;">Form Submitted</p>
             </div>
         </div>
 
-        <!-- Your existing scripts -->
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
+        <!-- Simple error overlay -->
+        <div id="errorOverlay" class="overlay" style="display:none;">
+            <div class="overlay-box">
+                <p>❌ Submission failed. Please try again.</p>
+            </div>
+        </div>
+    </div>
 
-        <script src="https://kit.fontawesome.com/d408e8dabc.js" crossorigin="anonymous"></script>
-        <!-- <script src="js/jquery-3.7.1.js"></script> -->
-        <!-- <script src="js/bootstrap.min.js"></script> -->
+    <!-- Firebase (Compat CDN) - App, then services -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-check-compat.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Do NOT include the manual Google reCAPTCHA script for App Check -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js?render=..."></script> -->
 
-        <script>
-            AOS.init();
-        </script>
-        <script>
-            // Wait for the DOM to fully load
-            document.addEventListener("DOMContentLoaded", function() {
-                // Select the entire page content container
-                var pageContent = document.querySelector('.page-content');
+    <!-- Optional libs you already use -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 
-                // Add the "show" class to trigger the animation
-                pageContent.classList.add('show');
-            });
-        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Your script -->
+    <script src="js/script.js"></script>
+
+    <script>
+        AOS.init();
+        document.addEventListener("DOMContentLoaded", function() {
+            var pageContent = document.querySelector('.page-content');
+            pageContent.classList.add('show');
+        });
+    </script>
 </body>
-
-
 
 </html>
