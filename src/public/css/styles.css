@@ -133,7 +133,8 @@
                         position: relative;
                         height: auto;
                         /* Full screen */
-                        background-image: url('../images/waste2.jpg');
+                        background-image: url('../images-optimized/waste2.webp');
+                        background-image: image-set( url('../images-optimized/waste2.webp') type("image/webp"), url('../images-optimized/waste2.jpg') type("image/jpeg"));
                         /* 🔁 Replace this */
                         background-size: cover;
                         background-position: center;
@@ -416,7 +417,8 @@
                         position: relative;
                         height: auto;
                         /* Full screen */
-                        background-image: url('../images/waste.jpg');
+                        background-image: url('../images-optimized/waste.webp');
+                        background-image: image-set( url('../images-optimized/waste.webp') type("image/webp"), url('../images-optimized/waste.jpg') type("image/jpeg"));
                         /* 🔁 Replace this */
                         background-size: cover;
                         background-position: center;
@@ -714,6 +716,7 @@
                         font-size: 18px;
                         color: #fff;
                         transition: transform 0.3s ease, color 0.3s ease;
+                        text-decoration: none;
                     }
                     
                     .footer-socials a:hover {

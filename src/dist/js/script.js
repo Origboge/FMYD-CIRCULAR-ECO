@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (existingImg) existingImg.remove();
 
             if (file) {
-                if (file.size > 100 * 1024) {
+                if (file.size > 50 * 1024) {
                     passportError.style.display = "block";
                     passportInput.value = "";
                     return;
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (existingImg) existingImg.remove();
 
             if (file) {
-                if (file.size > 100 * 1024) {
+                if (file.size > 50 * 1024) {
                     ninError.style.display = "block";
                     ninInput.value = "";
                     return;

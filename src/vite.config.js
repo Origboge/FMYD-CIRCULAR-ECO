@@ -1,13 +1,24 @@
 // vite.config.js
-// vite.config.js
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
+import fs from 'fs-extra';
 
 export default defineConfig({
-    // THIS IS THE CRUCIAL CHANGE FOR FIREBASE HOSTING AND LOCAL 'npm serve dist'
-    base: '/',
+    base: '/', // Crucial for Firebase Hosting and local serve
 
     build: {
-        outDir: 'dist', // Ensure this is 'dist'
+        outDir: 'dist',
     },
-    // ... any other configuration you have
+
+    plugins: [{
+        name: 'remove-unoptimized-images',
+        closeBundle() {
+            // Path to dist/images
+            const distImages = resolve(__dirname, 'dist/images');
+            if (fs.existsSync(distImages)) {
+                fs.removeSync(distImages);
+                console.log('🧹 Removed unoptimized images from dist/');
+            }
+        },
+    }, ],
 });

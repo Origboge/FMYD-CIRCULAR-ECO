@@ -2,22 +2,36 @@
     "name": "fmyd",
     "version": "1.0.0",
     "description": "",
+    "type": "module",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "deploy": "gh-pages -d dist"
+        "deploy": "gh-pages -d dist",
+        "optimize-images": "node scripts/optimize-images.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "bootstrap": "^5.3.8",
         "firebase": "^12.1.0",
         "gh-pages": "^6.3.0"
     },
     "devDependencies": {
+        "fast-glob": "^3.3.3",
+        "fs-extra": "^11.3.1",
+        "globby": "^14.1.0",
+        "imagemin": "^9.0.1",
+        "imagemin-mozjpeg": "^10.0.0",
+        "imagemin-pngquant": "^10.0.0",
+        "imagemin-svgo": "^11.0.1",
+        "imagemin-webp": "^8.0.0",
+        "sass": "^1.92.1",
         "vite": "^7.1.2"
     }
+
+
 }
